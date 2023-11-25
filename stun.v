@@ -1,44 +1,46 @@
-module stunDetector (#parameter N = 50000000) (clk, bombPos, redPos, bluePos, bombEnable, redStunEnable, blueStunEnable);
+module stunDetector (#parameter N = 50000000) (clk, RbombPosX, RbombPosY, BbombPosX, BbombPosY, redPosX, bluePosX, redPosY, bluePosY, bombEnable, redStunEnable, blueStunEnable);
     input clk;
     
-    input [9:0][8:0] bombPos;
-    input [9:0][8:0] redPos;
-    input [9:0][8:0] bluePos;
+    input RbombPosX, RbombPosY;
+    input BbombPosX, BbombPosY;
+    input redPosX, redPosY;
+    input bluePosX, bluePosY;
 
-    input bombEnable;
+    input bombExploded;
 
-    output reg redStunEnable;
-    output reg blueStunEnable;
+    output reg redStunEnable = 0;
+    output reg blueStunEnable = 0;
 
 
-    always @(posedge clk) begin
+    // always @(posedge clk) begin
         
-        if(checkRedStun == 1) begin
-            redStunEnable <= 1;
-        end // need to implement a counter so they're not just perma dead lol
-        if(checkBlueStun == 1) begin
-            blueStunEnable <= 1;
-        end
+    //     if(redStunEnable == 1) begin
+    //         redStunEnable <= 1;
+    //     end // need to implement a counter so they're not just perma dead lol
+    //     if(checkBlueStun == 1) begin
+    //         blueStunEnable <= 1;
+    //     end
 
-    end
+    // end
+
+
 
     output reg [5:0] counterR = (N * 5) - 1;
     output reg [5:0] counterB = (N * 5) - 1;
     
-
 // handle blue stun timer
     always @(posedge clk) begin
-        
-        if(counterB == 0 && blueStunEnable) begin
-            blueStunEnable <= 0;
+        if(bombExploded) begin
+            if(counterB == 0 && blueStunEnable) begin
+                blueStunEnable <= 0;
+            end
+            else if (blueStunEnable) begin
+                counterB <= counterB - 1
+            end
+            else begin
+                counterB <= (N * 5) - 1;
+            end
         end
-        else if (blueStunEnable) begin
-            counterB <= counterB - 1
-        end
-        else begin
-            counterB <= (N * 5) - 1;
-        end
-
     end 
 
 // handle red stun timer
@@ -56,6 +58,11 @@ module stunDetector (#parameter N = 50000000) (clk, bombPos, redPos, bluePos, bo
 
     end 
 
+    always @(posedge clk) begin
+        checkRedStun R1(RbombPosX, RbombPosY, redPosX, redPosY, redStunEnable);
+        checkBlueStun B1(BbombPosX, BbombPosY, bluePosX, bluePosy, blueStunEnable);
+
+    end
 
 endmodule
 
