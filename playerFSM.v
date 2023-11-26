@@ -16,6 +16,10 @@ module playerFSM(
                 moveRIGHT = 4'd2,
                 moveUP = 4'd3, 
                 moveDOWN = 4'd4,
+                moveLEFTwait = 4'd1,
+                moveRIGHTwait = 4'd2,
+                moveUPwait = 4'd3, 
+                moveDOWNwait = 4'd4,
                 stunned = 4'd5,
                 stunTimer = 4'd6;
 
@@ -55,6 +59,47 @@ module playerFSM(
 
     end // state_FFS
 
+    always@(*) begin: state_FFs
+        case (current_state)
+            stationary: begin
+                if(directionUp)
+                    current_state = moveUP;
+                else if (directionDown)
+                    current_state = moveDOWN;
+                else if (directionLeft) 
+                    current_state = moveLEFT;
+                else if (directionRight)
+                    current_state = moveRIGHT;
+                else 
+                    current_state = stationary;
+            end
+            moveUP: begin
+                current_state = directionUp ? moveUPwait : stationary;
+            end
+            moveUPwait: begin
+                current_state = directionUp ? moveUPwait : stationary;
+            end
+            moveDOWN: begin
+                current_state = directionDown ? moveDOWNwait : stationary;
+            end
+            moveDOWNwait: begin
+                current_state = directionDown ? moveDOWNwait : stationary;
+            end
+            moveLEFT: begin
+                current_state = directionLeft ? moveLEFTwait : stationary;
+            end
+            moveLEFTwait: begin
+                current_state = directionLeft ? moveLEFTwait : stationary;
+            end
+            moveRIGHT: begin
+                current_state = directionRight ? moveRIGHTwait : stationary;
+            end
+            moveRIGHTwait: begin
+                current_state = directionRight ? moveRIGHTwait : stationary;
+            end
+            default: current_state = stationary;
+        endcase
+    end
 
     always@(*)
     begin //output logic
@@ -87,7 +132,6 @@ module playerFSM(
                 positionY <= positionY - 1;
                 else 
                 //animation trigger
-
             end
             stunned: begin
                 //animation trigger
@@ -117,6 +161,8 @@ module playerAnimation(
     output reg [3:0]animationAction
 
 );
+
+
 
 
 endmodule

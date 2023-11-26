@@ -38,7 +38,7 @@
 // endmodule
 
 
-module momentumGo(PS2_CLK, PS2_DAT, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+module PS2Input(PS2_CLK, PS2_DAT, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     input PS2_CLK;
     input PS2_DAT;
     output [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
@@ -53,7 +53,47 @@ module momentumGo(PS2_CLK, PS2_DAT, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     hex_decoder u3(keyboard[15:12], HEX2);
     hex_decoder u4(keyboard[19:16], HEX3);
     hex_decoder u5(keyboard[26:23], HEX4);
-    hex_decoder u6(keyboard[30:27], HEX5);
+    hex_decoder u6(keyboard[30:27], HEX5); // we want to make sure that this is the one we read
 
+// we can run the ps2 hex output at the same time the normal game is running
 
 endmodule
+
+module PS2decoder(clk, keyboard, directionLeft, directionRight, directionUp, directionDown);
+    input clk;
+    input [31:0] keyboard;
+
+    output reg directionLeft = 0 
+    output reg directionRight = 0
+    output reg directionUp = 0
+    output reg directionDown = 0;
+
+    always@(posedge clk) begin
+        if(keyboard[30:27] == 1101010101) // insert bit representation here for LEFT
+            directionLeft <= 1;
+            directionRight <= 0;
+            directionUp <= 0;
+            directionDown <= 0;
+        else if (keyboard[30:27] == 1101010101) // insert bit representation here for RIGHT
+            directionLeft <= 0;
+            directionRight <= 1;
+            directionUp <= 0;
+            directionDown <= 0;
+        else if (keyboard[30:27] == 1101010101) // insert bit representation here for UP
+            directionLeft <= 0;
+            directionRight <= 0;
+            directionUp <= 1;
+            directionDown <= 0;
+        else if (keyboard[30:27] == 1101010101) // insert bit representation here for DOWN
+            directionLeft <= 0;
+            directionRight <= 0;
+            directionUp <= 0;
+            directionDown <= 1;
+        else // resets if direction input to be 0 otherwise
+            directionLeft <= 0 
+            directionRight <= 0
+            directionUp <= 0
+            directionDown <= 0;
+    end
+
+end
