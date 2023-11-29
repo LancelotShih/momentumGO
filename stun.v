@@ -26,8 +26,8 @@ module stunDetector (#parameter N = 50000000) (clk, RbombPosX, RbombPosY, BbombP
 
 
 
-    output reg [5:0] counterR = (N * 5) - 1;
-    output reg [5:0] counterB = (N * 5) - 1;
+    output reg [27:0] counterR = (N * 5) - 1;
+    output reg [27:0] counterB = (N * 5) - 1;
     
 // handle blue stun timer
     always @(posedge clk) begin
