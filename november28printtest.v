@@ -2,88 +2,118 @@
 
 
 
-module november28printtest
-	(
-		CLOCK_50,						//	On Board 50 MHz
-		// Your inputs and outputs here
-		KEY,							// On Board Keys
-		// The ports below are for the VGA output.  Do not change.
-		VGA_CLK,   						//	VGA Clock
-		VGA_HS,							//	VGA H_SYNC
-		VGA_VS,							//	VGA V_SYNC
-		VGA_BLANK_N,						//	VGA BLANK
-		VGA_SYNC_N,						//	VGA SYNC
-		VGA_R,   						//	VGA Red[9:0]
-		VGA_G,	 						//	VGA Green[9:0]
-		VGA_B   						//	VGA Blue[9:0]
-	);
+  module november28printtest
+  	(
+  		CLOCK_50,						//	On Board 50 MHz
+  		// Your inputs and outputs here
+  		KEY,							// On Board Keys
+  		// The ports below are for the VGA output.  Do not change.
+  		VGA_CLK,   						//	VGA Clock
+  		VGA_HS,							//	VGA H_SYNC
+  		VGA_VS,							//	VGA V_SYNC
+  		VGA_BLANK_N,						//	VGA BLANK
+  		VGA_SYNC_N,						//	VGA SYNC
+  		VGA_R,   						//	VGA Red[9:0]
+  		VGA_G,	 						//	VGA Green[9:0]
+  		VGA_B,   						//	VGA Blue[9:0]
+  		LEDR
+  	);
 
-	input			CLOCK_50;				//	50 MHz
-	input	[3:0]	KEY;					
-	// Declare your inputs and outputs here
-	// Do not change the following outputs
-	output			VGA_CLK;   				//	VGA Clock
-	output			VGA_HS;					//	VGA H_SYNC
-	output			VGA_VS;					//	VGA V_SYNC
-	output			VGA_BLANK_N;				//	VGA BLANK
-	output			VGA_SYNC_N;				//	VGA SYNC
-	output	[7:0]	VGA_R;   				//	VGA Red[7:0] Changed from 10 to 8-bit DAC
-	output	[7:0]	VGA_G;	 				//	VGA Green[7:0]
-	output	[7:0]	VGA_B;   				//	VGA Blue[7:0]
+  	input			CLOCK_50;				//	50 MHz
+  	input	[3:0]	KEY;					
+  	// Declare your inputs and outputs here
+  	// Do not change the following outputs
+  	output			VGA_CLK;   				//	VGA Clock
+  	output			VGA_HS;					//	VGA H_SYNC
+  	output			VGA_VS;					//	VGA V_SYNC
+  	output			VGA_BLANK_N;				//	VGA BLANK
+  	output			VGA_SYNC_N;				//	VGA SYNC
+  	output	[7:0]	VGA_R;   				//	VGA Red[7:0] Changed from 10 to 8-bit DAC
+  	output	[7:0]	VGA_G;	 				//	VGA Green[7:0]
+  	output	[7:0]	VGA_B;   				//	VGA Blue[7:0]
+  	output [3:0]LEDR;
 	
-	wire resetn;
-	assign resetn = KEY[0];
+  	wire resetn;
+  	assign resetn = KEY[0];
 	
-	// Create the colour, x, y and writeEn wires that are inputs to the controller.
+  	// Create the colour, x, y and writeEn wires that are inputs to the controller.
 
-	wire [2:0] colour;
-	wire [9:0] x;
-	wire [8:0] y;
-	wire writeEn;
+  	wire [2:0] colour;
+  	wire [9:0] x;
+  	wire [8:0] y;
+  	wire writeEn;
 
-	// Create an Instance of a VGA controller - there can be only one!
-	// Define the number of colours as well as the initial background
-	// image file (.MIF) for the controller.
-	vga_adapter VGA(
-			.resetn(resetn),
-			.clock(CLOCK_50),
-			.colour(colour),
-			.x(x),
-			.y(y),
-			.plot(writeEn),
-			/* Signals for the DAC to drive the monitor. */
-			.VGA_R(VGA_R),
-			.VGA_G(VGA_G),
-			.VGA_B(VGA_B),
-			.VGA_HS(VGA_HS),
-			.VGA_VS(VGA_VS),
-			.VGA_BLANK(VGA_BLANK_N),
-			.VGA_SYNC(VGA_SYNC_N),
-			.VGA_CLK(VGA_CLK));
-		defparam VGA.RESOLUTION = "480x360";
-		defparam VGA.MONOCHROME = "FALSE";
-		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
-		defparam VGA.BACKGROUND_IMAGE = "black.mif";
+  	// Create an Instance of a VGA controller - there can be only one!
+  	// Define the number of colours as well as the initial background
+  	// image file (.MIF) for the controller.
+  	vga_adapter VGA(
+  			.resetn(resetn),
+  			.clock(CLOCK_50),
+  			.colour(colour),
+  			.x(x),
+  			.y(y),
+  			.plot(draw_enable),
+  			/* Signals for the DAC to drive the monitor. */
+  			.VGA_R(VGA_R),
+  			.VGA_G(VGA_G),
+  			.VGA_B(VGA_B),
+  			.VGA_HS(VGA_HS),
+  			.VGA_VS(VGA_VS),
+  			.VGA_BLANK(VGA_BLANK_N),
+  			.VGA_SYNC(VGA_SYNC_N),
+  			.VGA_CLK(VGA_CLK));
+  		defparam VGA.RESOLUTION = "320x240";
+  		defparam VGA.MONOCHROME = "FALSE";
+  		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
+  		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 			
 	
-	wire draw_enable;
-	wire [2:0]colour_wire;
-	wire [9:0]initial1;
-	wire [8:0]initial2;
-	wire finishedDrawingSignal;
+  	wire draw_enable;
+  	wire [9:0]initial1;
+  	wire [8:0]initial2;
+  	wire finishedDrawingSignal;
+
+  	//communication variables to VGA are colour, draw_enable
+	
+  	// 	draw D1(.clock(CLOCK_50), .reset(!KEY[0]), .enable_draw(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .xOutput(x), .yOutput(y), .finished(finishedDrawingSignal) );
+  // 	simpleBoardFSM B1(.idleLED(LEDR[0]), .trigger(!KEY[1]), .colour(colour), .clock(CLOCK_50), .reset(!KEY[0]), .draw_enable(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .finished(finishedDrawingSignal));
 
 	
-	simpleBoardFSM simple(.trigger(!KEY[1]), .colour(colour_wire), .clock(CLOCK_50), .reset(!KEY[0]), .draw_enable(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .finished(finishedDrawingSignal));
-	draw draw1(.clock(CLOCK_50), .reset(!KEY[0]), .enable_draw(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .xOutput(x), .yOutput(y), .finished(finishedDrawingSignal));
+  	simpleBoardFSM simple(.idleLED(LEDR[1]), .trigger(!KEY[1]), .colour(colour), .clock(CLOCK_50), .reset(!KEY[0]), .draw_enable(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .finished(finishedDrawingSignal));
+  	draw draw1(.clock(CLOCK_50), .reset(!KEY[0]), .enable_draw(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .xOutput(x), .yOutput(y), .finished(finishedDrawingSignal));
 	
+  	assign LEDR[0] = draw_enable;
 
-endmodule
+  endmodule
 
-module positionReceiver();
-endmodule
+ module positionReceiver();
+ endmodule
 
-module addressToScreenPosition();
-endmodule
+ module addressToScreenPosition();
+ endmodule
+//
+//module topLevel(CLOCK_50, KEY, LEDR, x, y, colour, draw_enable);
+//
+//	output wire [2:0] colour;
+//	output wire [9:0] x;
+//	output wire [8:0] y;
+//	output [3:0] LEDR;
+//	
+//	
+//	input CLOCK_50;
+//	input [3:0] KEY;
+//		
+//	output draw_enable;
+//	wire [9:0]initial1;
+//	wire [8:0]initial2;
+//	wire finishedDrawingSignal;
+//
+//	assign LEDR[0] = draw_enable;
+//
+//	draw D1(.clock(CLOCK_50), .reset(!KEY[0]), .enable_draw(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .xOutput(x), .yOutput(y), .finished(finishedDrawingSignal) );
+//	simpleBoardFSM B1(.idleLED(LEDR[0]), .trigger(!KEY[1]), .colour(colour), .clock(CLOCK_50), .reset(!KEY[0]), .draw_enable(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .finished(finishedDrawingSignal));
+//
+//endmodule
 
 
 module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOutput, yOutput, finished );
@@ -109,7 +139,6 @@ module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOu
 
 		if(reset || finished)begin
 			movingX <= 0;
-			finished <= 0;
 		end
 		else if (enable_draw) begin 
 			if(movingX == 9) begin
@@ -147,7 +176,7 @@ module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOu
 endmodule
 
 
-module simpleBoardFSM(trigger, colour, clock, reset, draw_enable, initial_xPosition, initial_yPosition, finished);
+module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, initial_xPosition, initial_yPosition, finished);
 
 
 	localparam  Idle = 10'd1,
@@ -157,18 +186,21 @@ module simpleBoardFSM(trigger, colour, clock, reset, draw_enable, initial_xPosit
 				DRAW2 = 10'd5;
 
 	input trigger, clock, reset, finished;
+	output reg idleLED = 1;
 
 	output reg [2:0] colour;
 	output [9:0]initial_xPosition;
-	output [9:0]initial_yPosition;
+	output [8:0]initial_yPosition;
 	output reg draw_enable;
 
-	reg [9:0] initialX, initialY;
+	reg [9:0] initialX;
+	reg [8:0] initialY;
 	reg [9:0]current_state, next_state;
 
 	//buffering for 60Hz 
 	
-	reg reset_buffer, enable_buffer;
+	reg reset_buffer = 0;
+	reg enable_buffer = 0;
 	wire done_buffering;
 
 	buffer b1(.clk(clock), .reset(reset_buffer), .enable(enable_buffer), .done(done_buffering));
@@ -216,13 +248,12 @@ module simpleBoardFSM(trigger, colour, clock, reset, draw_enable, initial_xPosit
 	///
 	always@(*) begin: output_logic 
 
-		colour <= 3'b000;
-		initialX <= 0;
-		initialY <= 0;
+		idleLED <= 0;
 
 		case(current_state)
 			Idle: begin
 				draw_enable <= 0;
+				idleLED <= 1;
 			end
 
 			DRAW1_START: begin
@@ -237,20 +268,22 @@ module simpleBoardFSM(trigger, colour, clock, reset, draw_enable, initial_xPosit
 				reset_buffer <= 1;
 			end
 
-			DRAW1: begin
+			DRAW1: begin //BLUE
+				colour <= 3'b001;
 				reset_buffer <= 0;
 				enable_buffer <= 1;
-				initialX <= 1;
-				initialY <= 1;
+				initialX <= 20;
+				initialY <= 20;
 				if(finished)
 				draw_enable <= 0;
 			end
 
-			DRAW2: begin
+			DRAW2: begin //RED
+				colour <= 3'b100;
 				reset_buffer <= 0;
 				enable_buffer <= 1;
-				initialX <= 1;
-				initialY <= 1;
+				initialX <= 10;
+				initialY <= 10;
 				if(finished)
 				draw_enable <= 0;
 			end
@@ -277,7 +310,7 @@ module buffer(clk, reset, enable, done);
 	input clk, reset, enable;
 	output reg done = 0;
 
-	reg [20:0] buffer_counter = 0;
+	reg [35:0] buffer_counter = 0;
 
 	always@(posedge clk)
 	begin: wait_time
@@ -289,7 +322,7 @@ module buffer(clk, reset, enable, done);
 
 		else if(enable)
 		begin
-			if(buffer_counter == 100) //60Hz = 50000000 / 60 - 1
+			if(buffer_counter == 50000000/60  - 1) //60Hz = 50000000 / 60 - 1
 			begin
 				done <= 1;
 				buffer_counter <= 0;
