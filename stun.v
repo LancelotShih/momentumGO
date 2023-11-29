@@ -1,10 +1,10 @@
 module stunDetector (#parameter N = 50000000) (clk, RbombPosX, RbombPosY, BbombPosX, BbombPosY, redPosX, bluePosX, redPosY, bluePosY, bombEnable, redStunEnable, blueStunEnable, stunIndicator);
     input clk;
     
-    input RbombPosX, RbombPosY;
-    input BbombPosX, BbombPosY;
-    input redPosX, redPosY;
-    input bluePosX, bluePosY;
+    input [5:0] RbombPosX, RbombPosY;
+    input [5:0] BbombPosX, BbombPosY;
+    input [5:0] redPosX, redPosY;
+    input [5:0] bluePosX, bluePosY;
 
     input bombExploded;
 
@@ -60,11 +60,8 @@ module stunDetector (#parameter N = 50000000) (clk, RbombPosX, RbombPosY, BbombP
 
     end 
 
-    always @(posedge clk) begin
-        checkRedStun R1(RbombPosX, RbombPosY, redPosX, redPosY, redStunEnable);
-        checkBlueStun B1(BbombPosX, BbombPosY, bluePosX, bluePosy, blueStunEnable);
-
-    end
+    checkRedStun R1(RbombPosX, RbombPosY, redPosX, redPosY, redStunEnable);
+    checkBlueStun B1(BbombPosX, BbombPosY, bluePosX, bluePosy, blueStunEnable);
 
 endmodule
 
