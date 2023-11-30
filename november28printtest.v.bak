@@ -111,12 +111,12 @@
 
 // endmodule
 
- module positionReceiver();
- endmodule
+//  module positionReceiver();
+//  endmodule
 
- module addressToScreenPosition();
- endmodule
-//
+//  module addressToScreenPosition();
+//  endmodule
+// //
 
 
 
@@ -156,7 +156,7 @@ module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOu
 			
 		end
 	end
-//
+
 	//increment Y
 	always @(posedge clock) begin
 		
@@ -285,43 +285,39 @@ module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_
 				colour <= 3'b001;
 				plot_enable <= 1;
 				reset_buffer <= 1;
-				initialX <= 240;
-				initialY <= 40;
+				initialX <= 20;
+				initialY <= 20;
 			end
 
 			DRAW2_START: begin
 				colour <= 3'b100;
 				plot_enable <= 1;
 				reset_buffer <= 1;
-				initialX <= 100;
-				initialY <= 40;
+				initialX <= 20;
+				initialY <= 20;
 			end
 
 			DRAW1: begin //BLUE
-				draw_enable <= 1;
-				colour <= 3'b001;
-				reset_buffer <= 0;
-				enable_buffer <= 1;
-			end
-
-			DRAW2: begin //RED
 				draw_enable <= 1;
 				colour <= 3'b100;
 				reset_buffer <= 0;
 				enable_buffer <= 1;
 			end
 
+			DRAW2: begin //RED
+				draw_enable <= 1;
+				colour <= 3'b001;
+				reset_buffer <= 0;
+				enable_buffer <= 1;
+			end
+
 			WAIT1: begin 
-				initialX <= 0;
-				initialY <= 0;
 				draw_enable <= 0;
 				plot_enable <= 0;
 				enable_buffer <= 1;
 			end
 
 			WAIT2: begin
-				initialX <= 0;
-				initialY <= 0;
 				draw_enable <= 0;
 				plot_enable <= 0;
 				enable_buffer <= 1;
@@ -361,7 +357,7 @@ module buffer(clk, reset, enable, done);
 
 		else if(enable)
 		begin
-			if(buffer_counter == 50000000/20 - 1) //60Hz = 50000000 / 60 - 1
+			if(buffer_counter == 50000000  - 1) //60Hz = 50000000 / 60 - 1
 			begin
 				done <= 1;
 				buffer_counter <= 0;

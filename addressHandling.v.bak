@@ -1,10 +1,10 @@
 
- module addressCounter (clock, reset, enable, done, address, doneAll, LIMIT);
+ module addressCounter (clock, reset, enable, done, address, doneAll, LIMIT)
 
- 	input clock, reset, enable, done;
+ 	input clk, reset, enable, done;
 	input [10:0] LIMIT;
- 	output reg [10:0] address;
-	output reg doneAll; 
+ 	output [10:0] address;
+	output doneAll; 
 	
 	
 	always@(posedge clock) 
@@ -16,7 +16,7 @@
 		end
 		else if(enable && done) //
 		begin
-			if(address == LIMIT) begin
+			if(address_counter == LIMIT) begin
 				doneAll <= 1;
 				address <= 0;
 			end
@@ -43,7 +43,7 @@ module positionToAddress(positionX, positionY, address);
     input [3:0]positionX, positionY;
     output [8:0]address;
 
-    assign address = 16 * positionY + positionX;
+    assign address = 9'd(16 * positionY + positionX);
 endmodule
 
 module positionToPixel(positionX, positionY, pixelX, pixelY);

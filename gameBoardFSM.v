@@ -4,11 +4,12 @@ module gameBoardFSM(red_X, red_Y, blue_X, blue_Y, clock, reset,
                     oColour, writeMemoryRed, writeMemoryBlue, readMemory, 
                     draw_background, draw_foreground,
                     address_Red, address_Blue,
-                    draw_enable, plot_enable
+                    draw_enable, plot_enable, count255_enable,
+                    finished
                     );
 
 input [3:0] red_X, red_Y, blue_X, blue_Y, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y;
-input redMoved, blueMoved, clock, reset, 
+input clock, reset, 
 redBombPlaced, blueBombPlaced;
 output oRed_X, oRed_Y, oBlue_X, oBlue_Y;
 output [2:0] oColour1, oColour2;
@@ -39,12 +40,14 @@ always@(*)
 begin: state_transition_table
     case (current_state)
         Idle: begin
-            if(redMoved || blueMoved || redBombPlaced || blueBombPlaced) begin
+            
                 next_state <= WriteBoard;
-            end    
+                
             
         end
-
+        StartWriting: begin
+            next_state <= WriteBoard;
+        end
         WriteBoard: begin
             if(doneWriting)
             next_state <= DrawBackground;
@@ -62,7 +65,7 @@ begin: state_transition_table
             next_state <= frame4;
             else if(doneframe4 && doneBackground)
             next_state <= frame5;
-            else if (doneBackground )
+            else if (doneframe5 && doneBackground )
             next_state <= DrawForeground;
             else
             next_state <= DrawBackground;
@@ -105,12 +108,20 @@ begin: state_transition_table
 
         frame5: begin
             if(doneframe5)
-            next_state <= Idle;
+            next_state <= DrawBackground;
             else 
             next_state <= frame5;
         end
     endcase
 
+    //BRAM (address_a,address_b,clock,data_a,data_b,rden_a,rden_b,wren_a,wren_b,q_a,q_b);
+    //positionToAddress(positionX, positionY, address);
+
+    positionToAddress RedPosToAddress(red_X, red_Y, red_address);
+    positionToAddress BluePosToAddress(blue_X, blue_Y, blue_address);
+
+    reg [2:0] data_a; //RED
+    reg [2:0] data_b; //BLUE
 
     
     always @(*)
@@ -120,22 +131,33 @@ begin: state_transition_table
 
         case (current_state)
 
-           WriteBoard: begin
-            //position to address convert
-            //write enable for both ports
-            //check if they are same
-            //write colours
-            //all happens in one tick? 
-           //determine address based on x and y positions, then write.
-            writeMemoryRed <= 1;
-            writeMemoryBlue <= 1;
+            StartWriting: begin
+                writeMemoryBlue <= 1;
+                writeMemoryRed <= 1;
+            end
 
-           end
+            WriteBoard: begin
+                writeMemoryBlue <= 1;
+                writeMemoryRed <= 1;
+                if(red_address == blue_address)begin
+                    data_a <= 3'b110;
+                    data_b <= 3'b110;
+                end
+                else begin
+                    data_a <= 3'b100;
+                    data_b <= 3'b001;
+                end
+            end
 
-           DrawBackground: begin
-            
+            StartDrawBackground: begin
+                //reset 
+                //prepares to start the counter from 0-255
+            end
 
-           end
+            DrawBackground: begin
+                
+
+            end
 
         // default:    // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
         endcase
@@ -145,7 +167,7 @@ begin: state_transition_table
         // current_state registers
         always@(posedge clk)
         begin: state_FFs
-            if(!Reset) begin
+            if(reset) begin
                 current_state <= Idle;
             end
             else

@@ -1,0 +1,174 @@
+# Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# OpenFile C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/toplevel.do
+pwd
+# C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO
+do toplevel.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:55:24 on Nov 30,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module topLevel
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# 	positionReceiver
+# 	addressToScreenPosition
+# 	buffer_short
+# End time: 13:55:25 on Nov 30,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 13:55:25 on Nov 30,2023
+# Loading work.topLevel
+# Loading work.draw
+# Loading work.simpleBoardFSM
+# Loading work.buffer
+# unsigned
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:57:00 on Nov 30,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module topLevel
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# 	positionReceiver
+# 	addressToScreenPosition
+# 	buffer_short
+# End time: 13:57:00 on Nov 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:57:02 on Nov 30,2023, Elapsed time: 0:01:37
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 13:57:02 on Nov 30,2023
+# Loading work.topLevel
+# Loading work.draw
+# Loading work.simpleBoardFSM
+# Loading work.buffer
+# unsigned
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:03:17 on Nov 30,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module topLevel
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# 	positionReceiver
+# 	addressToScreenPosition
+# 	buffer_short
+# End time: 14:03:17 on Nov 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 14:03:20 on Nov 30,2023, Elapsed time: 0:06:18
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 14:03:20 on Nov 30,2023
+# Loading work.topLevel
+# Loading work.draw
+# Loading work.simpleBoardFSM
+# Loading work.buffer
+# unsigned
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:08:05 on Nov 30,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module topLevel
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# 	positionReceiver
+# 	addressToScreenPosition
+# 	buffer_short
+# End time: 14:08:05 on Nov 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 14:08:08 on Nov 30,2023, Elapsed time: 0:04:48
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 14:08:08 on Nov 30,2023
+# Loading work.topLevel
+# Loading work.draw
+# Loading work.simpleBoardFSM
+# Loading work.buffer
+# unsigned
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:15:44 on Nov 30,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module topLevel
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# 	positionReceiver
+# 	addressToScreenPosition
+# 	buffer_short
+# End time: 14:15:44 on Nov 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 14:15:46 on Nov 30,2023, Elapsed time: 0:07:38
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 14:15:46 on Nov 30,2023
+# Loading work.topLevel
+# Loading work.draw
+# Loading work.simpleBoardFSM
+# Loading work.buffer
+# unsigned
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:20:01 on Nov 30,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module topLevel
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# 	positionReceiver
+# 	addressToScreenPosition
+# 	buffer_short
+# End time: 14:20:01 on Nov 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 14:20:03 on Nov 30,2023, Elapsed time: 0:04:17
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 14:20:03 on Nov 30,2023
+# Loading work.topLevel
+# Loading work.draw
+# Loading work.simpleBoardFSM
+# Loading work.buffer
