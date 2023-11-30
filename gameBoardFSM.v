@@ -1,19 +1,30 @@
-module gameBoardFSM(red_X, red_Y, blue_X, blue_Y, clock, reset, 
+module gameBoardFSM(
+                    clock, reset, 
+                    red_X, red_Y, blue_X, blue_Y, 
                     redBombPlaced, blueBombPlaced, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y,
                     oRed_X, oRed_Y, oBlue_X, oBlue_Y,
-                    oColour, writeMemoryRed, writeMemoryBlue, readMemory, 
-                    draw_background, draw_foreground,
+
+                    oColour, plot_enable,
+
+                    writeMemory, readMemory, 
                     address_Red, address_Blue,
-                    draw_enable, plot_enable, count255_enable,
+
+                    draw_enable_background, draw_enable_foreground, count255_enable, reset_counter255, 
+
                     finished
                     );
 
+input clock, reset;
+input redBombPlaced, blueBombPlaced;
 input [3:0] red_X, red_Y, blue_X, blue_Y, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y;
-input clock, reset, 
-redBombPlaced, blueBombPlaced;
-output oRed_X, oRed_Y, oBlue_X, oBlue_Y;
-output [2:0] oColour1, oColour2;
-output writeMemory, readMemory, draw_background, draw_foreground;
+
+
+output oRed_X, oRed_Y, oBlue_X, oBlue_Y, address_Red, address_Blue;
+output [2:0] oColour;
+output plot_enable;
+
+
+output writeMemory, readMemory, draw_enable_background, draw_enable_foreground;
 output [8:0]red_address, blue_address; 
 
 localparam Idle = 10'd0,
@@ -32,10 +43,13 @@ localparam Idle = 10'd0,
 
 reg [10:0] current_state, next_state;
 
-reg doneWriting, doneBackground, 
+wire doneWriting, doneBackground; //corresponding to short buffer and buffer respectively
+reg reset_buffer, buffer_enable;
+reg reset_short_buffer, buffer_short_enable;
 
-// positionToAddress converter1(red_X, red_Y, red_address);
-// positionToAddress converter2(blue_X, blue_Y, blue_address);
+buffer_short BS1(.clk(), .reset(), .enable(), .done(doneWriting));
+buffer B1(.clk(), .reset(), .enable(), .done(doneBackground));
+
 
 always@(*)
 begin: state_transition_table
@@ -51,7 +65,7 @@ begin: state_transition_table
         end
         WriteRed: begin
             if(doneWriting) //need to have a condition for doneWriting 
-            next_state <= WriteBlue;
+            next_state <= StartWritingBlue;
             else
             next_state <= WriteRed;
         end
@@ -144,19 +158,20 @@ begin: state_transition_table
     begin: output_logic
         // By default make all our signals 0
         
-        writeMemory <= 0;
 
         case (current_state)
 
-            StartWriting: begin
+            //writing states //////////////////////////////////////////////////////////
+            StartWritingRed: begin
                 writeMemory <= 1;
             end
 
             WriteRed: begin
                 writeMemory <= 1;
-                
+                address_a <= red_address; 
+
                 if(red_address == blue_address)begin
-                    address_a <= 
+                    
                     data_a <= 3'b110; //let Yellow be NULL colour
                 end
                 else begin
@@ -164,44 +179,56 @@ begin: state_transition_table
                 end
             end
 
+            StartWritingBlue: begin
+                writeMemory <= 1;
+            end
+
             WriteBlue: begin
                 writeMemory <= 1;
+                address_a <= blue_address;
                 
                 if(red_address == blue_address)begin
+                    
                     data_b <= 3'b110;
                 end
                 else begin
                     data_b <= 3'b001;
                 end
             end
+            ////////////////////////////////////////////////////////////////////////////
 
+
+            //drawing background states /////////////////////////////////////////////////////////////
             StartDrawBackground: begin
                 //reset 
                 //prepares to start the counter from 0-255
+                reset_counter255 <= 1;
                 writeMemory <= 0;
                 readMemory <= 1; // there should be one read port with its corresponding address. 
                 plot_enable <= 1;
 
             end
 
-            DrawBackground: begin
-                count255_enable <= 1;
-                plot_enable <= 1;
-                if(finished)
-                draw_enable <= 0;
+            ResetBackgroundDraw: begin
+                //goes to this state upon receiving finished. Always sends back to Drawbackground.
                 reset_draw <= 1;
-                else begin
-                draw_enable <= 1;
-                reset_draw <= 0;
-                end
-                
+                draw_enable_background <= 0;
+                reset_counter255 <= 0;
             end
 
-        // default:    // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
-        endcase
-    end // enable_signals
+            DrawBackground: begin //either goes to Reset or goes to next state if done all is high
+                count255_enable <= 1;
+                plot_enable <= 1;
+                draw_enable_background <= 1;
+                reset_draw <= 0;
+            end
 
-    
+            
+            /////////////////////////////////////////////////////////////////////////////////
+
+        endcase
+    end 
+
         // current_state registers
         always@(posedge clk)
         begin: state_FFs
@@ -215,54 +242,129 @@ begin: state_transition_table
 endmodule
 
 
-
-//  reg [2:0] write_counter = 0;
-
-//     always@(posedge clk)
-//     begin: write_state_holding_clock //so that it can guarantee no timing problems with writing to BRAM
-
-//         if(reset) begin
-//         counter <= 0;
-//         doneWriting <= 0;
-//         end
-
-//         else if(current_state == WriteBoard) begin
-//             if(write_counter == 3) begin
-//                 write_counter <= 0;
-//                 doneWriting <= 1;
-//             end
-//             else begin
-//                 write_counter <= write_counter + 1;
-//             end
-//         end
-//     end
-
-
-// module rate_divider #(parameter division = 0) (
-
-// 	input wire clk, //50 Mhz
-// 	output reg divided_clk = 0
+module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOutput, yOutput, finished );
 	
-// );
-
-// reg[2:0] counter_value = 0;
-
-
-
-// always @ (posedge clk) begin
-
-// 	//division is 2^ (n+1)
-// 	if (counter_value == division) 
-// 	counter_value <= 0;
-// 	else
-// 	counter_value <= counter_value + 1;
-
-// end
-
-// always @ (posedge clk) begin
+	localparam WIDTH = 10'd40;
 	
-// 	if(counter_value == division)
-// 	divided_clk <= !divided_clk;
-// end
-// endmodule
+	input clock, reset;
+	input enable_draw;
+	input [9:0]initial_xPosition;
+	input [8:0]initial_yPosition;
 
+	output [9:0]xOutput;
+	output [8:0]yOutput;
+	output reg finished = 0;
+	
+	
+	reg [20:0]yCounter = 0;
+	reg [9:0]movingX = 0;
+	reg [8:0]movingY = 0;
+
+	assign xOutput = movingX + initial_xPosition;
+	assign yOutput = movingY + initial_yPosition;
+	
+	//increment X
+	always @(posedge clock) begin
+
+		if(reset || finished)begin
+			movingX <= 0;
+		end
+		else if (enable_draw) begin 
+			if(movingX == WIDTH - 1) begin //width - 1
+				movingX <= 0;
+			end 
+			else begin
+				movingX <= movingX + 1;
+			end
+			
+		end
+	end
+//
+	//increment Y
+	always @(posedge clock) begin
+		
+		if(reset || finished)begin
+			movingY <= 0;
+			finished <= 0;
+			yCounter <= 0;
+		end
+		else if (enable_draw) begin
+			if(yCounter == WIDTH * WIDTH - 1) begin // width * 10 - 1
+				yCounter <= 0;
+				movingY <= 0;
+				finished <= 1;
+			end
+			else if((yCounter+1) % WIDTH == 0 && yCounter != 0)begin // replace 10 with width
+				movingY <= movingY + 1;
+				yCounter <= yCounter + 1;
+			end
+			else begin
+				yCounter <= yCounter + 1;
+			end
+		end
+	end
+endmodule
+
+
+
+module buffer(clk, reset, enable, done);
+
+	input clk, reset, enable;
+	output reg done = 0;
+
+	reg [40:0] buffer_counter = 0;
+
+	always@(posedge clk)
+	begin: wait_time
+		if(reset)
+		begin
+			done <= 0;
+			buffer_counter <= 0;
+		end 
+
+		else if(enable)
+		begin
+			if(buffer_counter == 50000000 - 1) //60Hz = 50000000 / 60 - 1
+			begin
+				done <= 1;
+				buffer_counter <= 0;
+			end
+			else begin
+			done <= 0;
+			buffer_counter <= buffer_counter + 1;
+			end
+		end
+	end
+endmodule
+
+
+
+module buffer_short(clk, reset, enable, done);
+
+	input clk, reset, enable;
+	output reg done;
+
+	reg [3:0] buffer_counter = 0;
+
+	always@(posedge clk)
+	begin: pulse_time
+		if(reset)
+		begin
+			done <= 0;
+			buffer_counter <= 0;
+		end 
+
+		else if(enable)
+		begin
+			if(buffer_counter == 5)
+			begin
+				done <= 1;
+				buffer_counter <= 0;
+			end
+			else begin
+			done <= 0;
+			buffer_counter <= buffer_counter + 1;
+			end
+		end
+	end
+endmodule
