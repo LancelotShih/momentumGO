@@ -17,17 +17,18 @@ output writeMemory, readMemory, draw_background, draw_foreground;
 output [8:0]red_address, blue_address; 
 
 localparam Idle = 10'd0,
-            StartWriting = 10'd ,
-            WriteBoard = 10'd,
-            StartDrawBackground = 10'd ,
-            DrawBackground = 10'd,
-            StartDrawForeground = 10'd ,
-            DrawForeground = 10'd,
-            frame1 = 10'd,
-            frame2 = 10'd,
-            frame3 = 10'd,
-            frame4 = 10'd,
-            frame5 = 10'd;
+            StartWriting = 10'd1,
+            WriteRed = 10'd2,
+            WriteBlue = 10'd3 ,
+            StartDrawBackground = 10'd4 ,
+            DrawBackground = 10'd5,
+            StartDrawForeground = 10'd6 ,
+            DrawForeground = 10'd7,
+            frame1 = 10'd8,
+            frame2 = 10'd9,
+            frame3 = 10'd10,
+            frame4 = 10'd11,
+            frame5 = 10'd12;
 
 reg [10:0] current_state, next_state;
 
@@ -45,14 +46,26 @@ begin: state_transition_table
                 
             
         end
-        StartWriting: begin
-            next_state <= WriteBoard;
+        StartWritingRed: begin
+            next_state <= WriteRed;
         end
-        WriteBoard: begin
+        WriteRed: begin
+            if(doneWriting) //need to have a condition for doneWriting 
+            next_state <= WriteBlue;
+            else
+            next_state <= WriteRed;
+        end
+
+        StartWritingBlue: begin
+            next_state <= WriteBlue;
+        end
+
+
+        WriteBlue: begin
             if(doneWriting)
             next_state <= DrawBackground;
             else
-            next_state <= WriteBoard;
+            next_state <= WriteBlue;
         end
 
         DrawBackground: begin
@@ -143,7 +156,8 @@ begin: state_transition_table
                 writeMemory <= 1;
                 
                 if(red_address == blue_address)begin
-                    data_a <= 3'b110;
+                    address_a <= 
+                    data_a <= 3'b110; //let Yellow be NULL colour
                 end
                 else begin
                     data_a <= 3'b100;
@@ -164,13 +178,23 @@ begin: state_transition_table
             StartDrawBackground: begin
                 //reset 
                 //prepares to start the counter from 0-255
+                writeMemory <= 0;
+                readMemory <= 1; // there should be one read port with its corresponding address. 
+                plot_enable <= 1;
+
             end
 
             DrawBackground: begin
+                count255_enable <= 1;
                 plot_enable <= 1;
+                if(finished)
+                draw_enable <= 0;
+                reset_draw <= 1;
+                else begin
                 draw_enable <= 1;
-
-
+                reset_draw <= 0;
+                end
+                
             end
 
         // default:    // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
@@ -212,3 +236,33 @@ endmodule
 //             end
 //         end
 //     end
+
+
+// module rate_divider #(parameter division = 0) (
+
+// 	input wire clk, //50 Mhz
+// 	output reg divided_clk = 0
+	
+// );
+
+// reg[2:0] counter_value = 0;
+
+
+
+// always @ (posedge clk) begin
+
+// 	//division is 2^ (n+1)
+// 	if (counter_value == division) 
+// 	counter_value <= 0;
+// 	else
+// 	counter_value <= counter_value + 1;
+
+// end
+
+// always @ (posedge clk) begin
+	
+// 	if(counter_value == division)
+// 	divided_clk <= !divided_clk;
+// end
+// endmodule
+

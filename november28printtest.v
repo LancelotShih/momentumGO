@@ -65,7 +65,7 @@
     		defparam VGA.RESOLUTION = "320x240";
     		defparam VGA.MONOCHROME = "FALSE";
     		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
-    		defparam VGA.BACKGROUND_IMAGE = "black.mif";
+    		defparam VGA.BACKGROUND_IMAGE = "white.mif";
 			
 	
     	wire draw_enable;
@@ -73,6 +73,7 @@
     	wire [9:0]initial1;
     	wire [8:0]initial2;
     	wire finishedDrawingSignal;
+		wire draw_resetter;
 
     	//communication variables to VGA are colour, draw_enable
 	
@@ -80,8 +81,8 @@
     // 	simpleBoardFSM B1(.idleLED(LEDR[0]), .trigger(!KEY[1]), .colour(colour), .clock(CLOCK_50), .reset(!KEY[0]), .draw_enable(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .finished(finishedDrawingSignal));
 
 	
-    	simpleBoardFSM simple(.idleLED(LEDR[1]), .trigger(!KEY[1]), .colour(colour), .clock(CLOCK_50), .reset(!KEY[0]), .draw_enable(draw_enable), .plot_enable(plot_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .finished(finishedDrawingSignal));
-    	draw draw1(.clock(CLOCK_50), .reset(!KEY[0]), .enable_draw(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .xOutput(x), .yOutput(y), .finished(finishedDrawingSignal));
+    	simpleBoardFSM simple(.idleLED(LEDR[1]), .trigger(!KEY[1]), .colour(colour), .clock(CLOCK_50), .reset(!KEY[0]), .draw_enable(draw_enable), .plot_enable(plot_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .finished(finishedDrawingSignal), .draw_resetter(draw_resetter));
+    	draw draw1(.clock(CLOCK_50), .reset(draw_resetter), .enable_draw(draw_enable), .initial_xPosition(initial1), .initial_yPosition(initial2), .xOutput(x), .yOutput(y), .finished(finishedDrawingSignal));
 	
     	assign LEDR[0] = plot_enable;
 
@@ -122,7 +123,7 @@
 
 module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOutput, yOutput, finished );
 	
-	localparam WIDTH = 5;
+	localparam WIDTH = 10'd40;
 	
 	input clock, reset;
 	input enable_draw;
@@ -132,6 +133,7 @@ module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOu
 	output [9:0]xOutput;
 	output [8:0]yOutput;
 	output reg finished = 0;
+	
 	
 	reg [20:0]yCounter = 0;
 	reg [9:0]movingX = 0;
@@ -163,6 +165,7 @@ module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOu
 		if(reset || finished)begin
 			movingY <= 0;
 			finished <= 0;
+			yCounter <= 0;
 		end
 		else if (enable_draw) begin
 			if(yCounter == WIDTH * WIDTH - 1) begin // width * 10 - 1
@@ -182,7 +185,7 @@ module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOu
 endmodule
 
 
-module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_enable, initial_xPosition, initial_yPosition, finished);
+module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_enable, initial_xPosition, initial_yPosition, finished, draw_resetter);
 
 
 	localparam  Idle = 10'd1,
@@ -201,6 +204,7 @@ module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_
 	output [8:0]initial_yPosition;
 	output reg draw_enable = 0;
 	output reg plot_enable = 0;
+	output reg draw_resetter = 0;
 
 	reg [9:0] initialX;
 	reg [8:0] initialY;
@@ -282,19 +286,21 @@ module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_
 			end
 
 			DRAW1_START: begin
-				colour <= 3'b001;
+				
 				plot_enable <= 1;
 				reset_buffer <= 1;
 				initialX <= 240;
-				initialY <= 100;
+				initialY <= 50;
+				draw_resetter <= 0;
 			end
 
 			DRAW2_START: begin
-				colour <= 3'b100;
+				
 				plot_enable <= 1;
 				reset_buffer <= 1;
 				initialX <= 100;
 				initialY <= 100;
+				draw_resetter <= 0;
 			end
 
 			DRAW1: begin //BLUE
@@ -317,6 +323,7 @@ module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_
 				draw_enable <= 0;
 				plot_enable <= 0;
 				enable_buffer <= 1;
+				draw_resetter <= 1;
 			end
 
 			WAIT2: begin
@@ -325,6 +332,7 @@ module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_
 				draw_enable <= 0;
 				plot_enable <= 0;
 				enable_buffer <= 1;
+				draw_resetter <= 1;
 			end
 		endcase
 	end
@@ -361,7 +369,7 @@ module buffer(clk, reset, enable, done);
 
 		else if(enable)
 		begin
-			if(buffer_counter == 50000000/20 - 1) //60Hz = 50000000 / 60 - 1
+			if(buffer_counter == 50000000 - 1) //60Hz = 50000000 / 60 - 1
 			begin
 				done <= 1;
 				buffer_counter <= 0;
