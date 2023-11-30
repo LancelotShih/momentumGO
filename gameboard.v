@@ -1,3 +1,7 @@
+
+//note from ryan - I think this module is no longer relevant
+
+
 module gameBoard;
     parameter WIDTH = 16;
     parameter HEIGHT = 16;

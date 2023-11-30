@@ -1,9 +1,10 @@
-module gameBoardFSM(redMoved, red_X, red_Y, blueMoved, blue_X, blue_Y, clock, reset, 
+module gameBoardFSM(red_X, red_Y, blue_X, blue_Y, clock, reset, 
                     redBombPlaced, blueBombPlaced, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y,
                     oRed_X, oRed_Y, oBlue_X, oBlue_Y,
                     oColour, writeMemoryRed, writeMemoryBlue, readMemory, 
                     draw_background, draw_foreground,
-                    address_Red, address_Blue
+                    address_Red, address_Blue,
+                    draw_enable, plot_enable
                     );
 
 input [3:0] red_X, red_Y, blue_X, blue_Y, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y;
@@ -15,14 +16,17 @@ output writeMemoryRed, writeMemoryBlue, readMemory, draw_background, draw_foregr
 output [8:0]red_address, blue_address; 
 
 localparam Idle = 10'd0,
-            WriteBoard = 10'd1,
-            DrawBoard = 10'd2,
-            DrawForeground = 10'd3,
-            frame1 = 10'd4,
-            frame2 = 10'd5,
-            frame3 = 10'd6,
-            frame4 = 10'd7,
-            frame5 = 10'd8;
+            StartWriting = 10'd ,
+            WriteBoard = 10'd,
+            StartDrawBackground = 10'd ,
+            DrawBackground = 10'd,
+            StartDrawForeground = 10'd ,
+            DrawForeground = 10'd,
+            frame1 = 10'd,
+            frame2 = 10'd,
+            frame3 = 10'd,
+            frame4 = 10'd,
+            frame5 = 10'd;
 
 reg [10:0] current_state, next_state;
 
@@ -43,12 +47,12 @@ begin: state_transition_table
 
         WriteBoard: begin
             if(doneWriting)
-            next_state <= DrawBoard;
+            next_state <= DrawBackground;
             else
             next_state <= WriteBoard;
         end
 
-        DrawBoard: begin
+        DrawBackground: begin
             // note that the frame 
             if (doneframe1 && doneBackground)
             next_state <= frame2;
@@ -61,7 +65,7 @@ begin: state_transition_table
             else if (doneBackground )
             next_state <= DrawForeground;
             else
-            next_state <= DrawBoard;
+            next_state <= DrawBackground;
         end
 
         DrawForeground: begin
@@ -73,28 +77,28 @@ begin: state_transition_table
 
         frame1: begin
             if(doneframe1)
-            next_state <= DrawBoard;
+            next_state <= DrawBackground;
             else 
             next_state <= frame1;
         end
 
         frame2:begin
             if(doneframe2)
-            next_state <= DrawBoard;
+            next_state <= DrawBackground;
             else 
             next_state <= frame2;
         end
 
         frame3: begin
             if(doneframe3)
-            next_state <= DrawBoard;
+            next_state <= DrawBackground;
             else 
             next_state <= frame3;
         end
 
         frame4: begin
             if(doneframe4)
-            next_state <= DrawBoard;
+            next_state <= DrawBackground;
             else 
             next_state <= frame4;
         end
@@ -105,8 +109,6 @@ begin: state_transition_table
             else 
             next_state <= frame5;
         end
-
-
     endcase
 
 
@@ -119,13 +121,18 @@ begin: state_transition_table
         case (current_state)
 
            WriteBoard: begin
+            //position to address convert
+            //write enable for both ports
+            //check if they are same
+            //write colours
+            //all happens in one tick? 
            //determine address based on x and y positions, then write.
             writeMemoryRed <= 1;
             writeMemoryBlue <= 1;
 
            end
 
-           DrawBoard: begin
+           DrawBackground: begin
             
 
            end
@@ -134,26 +141,6 @@ begin: state_transition_table
         endcase
     end // enable_signals
 
-    reg [2:0] write_counter = 0;
-
-    always@(posedge clk)
-    begin: write_state_holding_clock //so that it can guarantee no timing problems with writing to BRAM
-
-        if(reset) begin
-        counter <= 0;
-        doneWriting <= 0;
-        end
-
-        else if(current_state == WriteBoard) begin
-            if(write_counter == 3) begin
-                write_counter <= 0;
-                doneWriting <= 1;
-            end
-            else begin
-                write_counter <= write_counter + 1;
-            end
-        end
-    end
     
         // current_state registers
         always@(posedge clk)
@@ -167,3 +154,25 @@ begin: state_transition_table
     end
 endmodule
 
+
+
+//  reg [2:0] write_counter = 0;
+
+//     always@(posedge clk)
+//     begin: write_state_holding_clock //so that it can guarantee no timing problems with writing to BRAM
+
+//         if(reset) begin
+//         counter <= 0;
+//         doneWriting <= 0;
+//         end
+
+//         else if(current_state == WriteBoard) begin
+//             if(write_counter == 3) begin
+//                 write_counter <= 0;
+//                 doneWriting <= 1;
+//             end
+//             else begin
+//                 write_counter <= write_counter + 1;
+//             end
+//         end
+//     end
