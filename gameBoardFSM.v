@@ -13,7 +13,7 @@ input clock, reset,
 redBombPlaced, blueBombPlaced;
 output oRed_X, oRed_Y, oBlue_X, oBlue_Y;
 output [2:0] oColour1, oColour2;
-output writeMemoryRed, writeMemoryBlue, readMemory, draw_background, draw_foreground;
+output writeMemory, readMemory, draw_background, draw_foreground;
 output [8:0]red_address, blue_address; 
 
 localparam Idle = 10'd0,
@@ -57,6 +57,7 @@ begin: state_transition_table
 
         DrawBackground: begin
             // note that the frame 
+            
             if (doneframe1 && doneBackground)
             next_state <= frame2;
             else if (doneframe2 && doneBackground)
@@ -67,7 +68,9 @@ begin: state_transition_table
             next_state <= frame5;
             else if (doneframe5 && doneBackground )
             next_state <= DrawForeground;
-            else
+            else if(doneBackground)
+            next_state <= DrawForeground;
+            else 
             next_state <= DrawBackground;
         end
 
@@ -128,23 +131,32 @@ begin: state_transition_table
     begin: output_logic
         // By default make all our signals 0
         
+        writeMemory <= 0;
 
         case (current_state)
 
             StartWriting: begin
-                writeMemoryBlue <= 1;
-                writeMemoryRed <= 1;
+                writeMemory <= 1;
             end
 
-            WriteBoard: begin
-                writeMemoryBlue <= 1;
-                writeMemoryRed <= 1;
+            WriteRed: begin
+                writeMemory <= 1;
+                
                 if(red_address == blue_address)begin
                     data_a <= 3'b110;
-                    data_b <= 3'b110;
                 end
                 else begin
                     data_a <= 3'b100;
+                end
+            end
+
+            WriteBlue: begin
+                writeMemory <= 1;
+                
+                if(red_address == blue_address)begin
+                    data_b <= 3'b110;
+                end
+                else begin
                     data_b <= 3'b001;
                 end
             end
@@ -155,7 +167,9 @@ begin: state_transition_table
             end
 
             DrawBackground: begin
-                
+                plot_enable <= 1;
+                draw_enable <= 1;
+
 
             end
 

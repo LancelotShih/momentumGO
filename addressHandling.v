@@ -1,4 +1,13 @@
 
+
+//addressCounter AC1 (.clock(CLOCK_50), .reset(!KEY[0]), .enable( ), .done( ), .address( ), .doneAll( ), .LIMIT( ));
+//
+//addressToPosition ATP1 ( );
+//positionToPixel PTP1 ();
+
+//BRAM B1 (address_a, address_b, clock, data_a, data_b, rden_a, rden_b, wren_a, wren_b, q_a, q_b);
+ //BRAM (address_a,address_b,clock,data_a,data_b,rden_a,rden_b,wren_a,wren_b,q_a,q_b);
+
  module addressCounter (clock, reset, enable, done, address, doneAll, LIMIT);
 
  	input clock, reset, enable, done;

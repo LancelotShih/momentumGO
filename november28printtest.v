@@ -122,7 +122,7 @@
 
 module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOutput, yOutput, finished );
 	
-	localparam WIDTH = 40;
+	localparam WIDTH = 5;
 	
 	input clock, reset;
 	input enable_draw;
@@ -286,7 +286,7 @@ module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_
 				plot_enable <= 1;
 				reset_buffer <= 1;
 				initialX <= 240;
-				initialY <= 40;
+				initialY <= 100;
 			end
 
 			DRAW2_START: begin
@@ -294,7 +294,7 @@ module simpleBoardFSM(idleLED, trigger, colour, clock, reset, draw_enable, plot_
 				plot_enable <= 1;
 				reset_buffer <= 1;
 				initialX <= 100;
-				initialY <= 40;
+				initialY <= 100;
 			end
 
 			DRAW1: begin //BLUE
