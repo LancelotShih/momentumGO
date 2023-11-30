@@ -49,7 +49,7 @@ module PS2Input(PS2_CLK, PS2_DAT, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR[9:0])
     reg [31:0] redButtons  = 32'b01110000011100011011000110001000;
 
     reg [31:0] keyboard = 0;
-    reg [4:0] counter = 8;
+    reg [4:0] counter = 9;
     reg sendEnable;
     // output [7:0] recievedData;
     // output recievedEnable;
@@ -58,7 +58,7 @@ module PS2Input(PS2_CLK, PS2_DAT, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR[9:0])
         keyboard = (keyboard << 1) | PS2_DAT;
         if (counter == 0) begin
             sendEnable <= 1;
-            counter <= 8;
+            counter <= 7;
         end
         else begin
             sendEnable <= 0;
@@ -69,12 +69,12 @@ module PS2Input(PS2_CLK, PS2_DAT, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR[9:0])
     // PS2_Controller u0(CLOCK_50, 0, keyboard[7:0], sendEnable, PS2_CLK, PS2_DAT, receivedData, recievedEnable);
     //wire w1, w2, w3, w4;
 
-    hex_decoder u1(keyboard[4:1], HEX0);
-    hex_decoder u2(keyboard[8:5], HEX1);
-    hex_decoder u3(keyboard[15:12], HEX2);
-    hex_decoder u4(keyboard[19:16], HEX3);
-    hex_decoder u5(keyboard[26:23], HEX4);
-    hex_decoder u6(keyboard[30:27], HEX5); // we want to make sure that this is the one we read
+    // hex_decoder u1(keyboard[4:1], HEX0);
+    // hex_decoder u2(keyboard[8:5], HEX1);
+    // hex_decoder u3(keyboard[15:12], HEX2);
+    // hex_decoder u4(keyboard[19:16], HEX3);
+    // hex_decoder u5(keyboard[26:23], HEX4);
+    // hex_decoder u6(keyboard[30:27], HEX5); // we want to make sure that this is the one we read
 
 // we can run the ps2 hex output at the same time the normal game is running
     // output reg [5:0] readCounter = 32;
@@ -151,12 +151,12 @@ module PS2decoder(sendEnable, clk, keyboard, colorButtons, stop, directionLeft, 
             directionUp <= 0;
             directionDown <= 1;
         end
-        else if (keyboard[17:9] == stop) begin// resets if direction input to be 0 otherwise
-            directionLeft <= 0;
-            directionRight <= 0;
-            directionUp <= 0;
-            directionDown <= 0;
-        end
+        // else if (keyboard[30:18] == stop) begin// resets if direction input to be 0 otherwise
+        //     directionLeft <= 0;
+        //     directionRight <= 0;
+        //     directionUp <= 0;
+        //     directionDown <= 0;
+        // end
         else begin// resets if direction input to be 0 otherwise
             directionLeft <= 0;
             directionRight <= 0;
