@@ -65,15 +65,15 @@ module stunDetector (#parameter N = 50000000) (clk, RbombPosX, RbombPosY, BbombP
 
 endmodule
 
-module stunCountdownvisual(clk, stunIndicator, numbers);
-    input clk, stunIndicator;
-    output numbers;
+// module stunCountdownvisual(clk, stunIndicator, numbers);
+//     input clk, stunIndicator;
+//     output numbers;
 
-    always @(posedge clk) begin
-        if (stunIndicator)
-            // turn the player that got stunned to the color purple? or some other indicator works too
+//     always @(posedge clk) begin
+//         if (stunIndicator)
+//             // turn the player that got stunned to the color purple? or some other indicator works too
 
-endmodule
+// endmodule
 
 
 module checkRedStun(clk, RbombPosX, RbombPosY, redPosX, redPosY, redStunEnable)
