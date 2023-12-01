@@ -2,29 +2,21 @@ module gameBoardFSM(
                     clock, reset, 
                     red_X, red_Y, blue_X, blue_Y, 
                     finished,
-                    redBombPlaced, blueBombPlaced, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y,
-                    oRed_X, oRed_Y, oBlue_X, oBlue_Y,
-
+                   
                     oColour, plot_enable,
 
                     writeMemory, readMemory, 
                     address_a,
 
-                    draw_enable_background, draw_enable_foreground 
-
-                    
+                    draw_enable_background, draw_enable_foreground //these shall enable their respective draw counters and MUX to the VGA. Foreground things will communicate directly with bomb module and playerFSM
                     );
 
 input clock, reset;
-input [3:0] red_X, red_Y, blue_X, blue_Y, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y;
-input redBombPlaced, blueBombPlaced;
+input [3:0] red_X, red_Y, blue_X, blue_Y;
 input finished;
 
-
-output oRed_X, oRed_Y, oBlue_X, oBlue_Y;
 output [2:0] oColour;
 output plot_enable;
-
 
 //BRAM/////////////////
 output writeMemory, readMemory; draw_enable_background, draw_enable_foreground;
@@ -90,6 +82,8 @@ begin: state_transition_table
         Idle: begin
             next_state <= WriteBoard; 
         end
+
+        /////////////////////////////////////////////////////////////////////////////////
         StartWritingRed: begin
             next_state <= WriteRed;
         end
@@ -111,10 +105,18 @@ begin: state_transition_table
             else
             next_state <= WriteBlue;
         end
+        /////////////////////////////////////////////////////////////////////////////////
+
+        StartDrawBackground:begin
+            next_state <= ResetBackgroundDraw;
+        end
+
+        ResetBackgroundDraw: begin
+            next_state <= Drawbackground;
+        end
 
         DrawBackground: begin
-            // note that the frame 
-            
+            // note that the frames must hold their done signal up and the next state needs to turn it off
             if (doneframe1 && doneBackground)
             next_state <= frame2;
             else if (doneframe2 && doneBackground)
@@ -126,10 +128,13 @@ begin: state_transition_table
             else if (doneframe5 && doneBackground )
             next_state <= DrawForeground;
             else if(doneBackground)
-            next_state <= DrawForeground;
+            next_state <= DrawForeground; // all boxes drawn
+            else if(finished)
+            next_state <= ResetBackgroundDraw; //1 box drawn
             else 
-            next_state <= DrawBackground;
+            next_state <= Drawbackground;
         end
+        /////////////////////////////////////////////////////////////////////////////////
 
         DrawForeground: begin
             if(startFrame1)
@@ -186,10 +191,14 @@ begin: state_transition_table
             //writing states //////////////////////////////////////////////////////////
             StartWritingRed: begin
                 writeMemory <= 1;
+                reset_short_buffer <= 1;
             end
 
             WriteRed: begin
                 writeMemory <= 1;
+                reset_short_buffer <= 0;
+                short_buffer_enable <= 1;
+
                 address_a <= red_address; 
 
                 if(red_address == blue_address)begin
@@ -203,10 +212,14 @@ begin: state_transition_table
 
             StartWritingBlue: begin
                 writeMemory <= 1;
+                reset_short_buffer <= 1;
             end
 
             WriteBlue: begin
                 writeMemory <= 1;
+                reset_short_buffer <= 0;
+                short_buffer_enable <= 1
+
                 address_a <= blue_address;
                 
                 if(red_address == blue_address)begin
@@ -238,7 +251,7 @@ begin: state_transition_table
                 reset_counter255 <= 0;
             end
 
-            DrawBackground: begin //either goes to Reset or goes to next state if done all is high
+            DrawBackground: begin //either goes to Reset or goes to foreground if done all is high
                 count255_enable <= 1;
                 plot_enable <= 1;
                 draw_enable_background <= 1;
