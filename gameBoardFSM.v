@@ -1,32 +1,71 @@
 module gameBoardFSM(
                     clock, reset, 
                     red_X, red_Y, blue_X, blue_Y, 
+                    finished,
                     redBombPlaced, blueBombPlaced, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y,
                     oRed_X, oRed_Y, oBlue_X, oBlue_Y,
 
                     oColour, plot_enable,
 
                     writeMemory, readMemory, 
-                    address_Red, address_Blue,
+                    address_a,
 
-                    draw_enable_background, draw_enable_foreground, count255_enable, reset_counter255, 
+                    draw_enable_background, draw_enable_foreground 
 
-                    finished
+                    
                     );
 
 input clock, reset;
-input redBombPlaced, blueBombPlaced;
 input [3:0] red_X, red_Y, blue_X, blue_Y, redBomb_X, redBomb_Y, blueBomb_X, blueBomb_Y;
+input redBombPlaced, blueBombPlaced;
+input finished;
 
 
-output oRed_X, oRed_Y, oBlue_X, oBlue_Y, address_Red, address_Blue;
+output oRed_X, oRed_Y, oBlue_X, oBlue_Y;
 output [2:0] oColour;
 output plot_enable;
 
 
-output writeMemory, readMemory, draw_enable_background, draw_enable_foreground;
-output [8:0]red_address, blue_address; 
+//BRAM/////////////////
+output writeMemory, readMemory; draw_enable_background, draw_enable_foreground;
+output address_a;
+wire [8:0]red_address, blue_address; 
 
+positionToAddress RedPosToAddress(red_X, red_Y, red_address);
+positionToAddress BluePosToAddress(blue_X, blue_Y, blue_address);
+
+//since when we read it, we need an address port, we can only use one
+
+////////////////////////
+
+//DRAW///
+output draw_enable_background, draw_enable_foreground;
+///
+
+//BUFFER////////////////////////////////////////////////
+wire doneWriting, doneBuffer; //corresponding to short buffer and buffer respectively
+reg reset_buffer, buffer_enable;
+reg reset_short_buffer, short_buffer_enable;
+
+
+buffer_short BS1(.clk(clock), .reset(reset_short_buffer), .enable(short_buffer_enable), .done(doneWriting));
+buffer B1(.clk(clock), .reset(reset_buffer), .enable(buffer_enable), .done(doneBuffer));
+//////////////////////////////////////////////////////////
+
+//Counter255/////////////////////////////////////////////
+reg reset_counter255, count255_enable;  
+wire [10:0] box_address;
+wire doneBackground;
+
+addressCounter AC1(.clock(clock), .reset(reset_counter255), .enable(count255_enable), .done(finished), .address(box_address), .doneAll(doneBackground));
+////////////////////////////////////////////////////////////
+
+
+
+reg [2:0] data_a; //RED
+reg [2:0] data_b; //BLUE
+
+// FSM STATES //////////////////////////
 localparam Idle = 10'd0,
             StartWriting = 10'd1,
             WriteRed = 10'd2,
@@ -41,24 +80,15 @@ localparam Idle = 10'd0,
             frame4 = 10'd11,
             frame5 = 10'd12;
 
+
 reg [10:0] current_state, next_state;
-
-wire doneWriting, doneBackground; //corresponding to short buffer and buffer respectively
-reg reset_buffer, buffer_enable;
-reg reset_short_buffer, buffer_short_enable;
-
-buffer_short BS1(.clk(), .reset(), .enable(), .done(doneWriting));
-buffer B1(.clk(), .reset(), .enable(), .done(doneBackground));
-
+///////////////////////////////////////////
 
 always@(*)
 begin: state_transition_table
     case (current_state)
         Idle: begin
-            
-                next_state <= WriteBoard;
-                
-            
+            next_state <= WriteBoard; 
         end
         StartWritingRed: begin
             next_state <= WriteRed;
@@ -145,15 +175,7 @@ begin: state_transition_table
     endcase
 
     //BRAM (address_a,address_b,clock,data_a,data_b,rden_a,rden_b,wren_a,wren_b,q_a,q_b);
-    //positionToAddress(positionX, positionY, address);
 
-    positionToAddress RedPosToAddress(red_X, red_Y, red_address);
-    positionToAddress BluePosToAddress(blue_X, blue_Y, blue_address);
-
-    reg [2:0] data_a; //RED
-    reg [2:0] data_b; //BLUE
-
-    
     always @(*)
     begin: output_logic
         // By default make all our signals 0
@@ -200,7 +222,7 @@ begin: state_transition_table
 
             //drawing background states /////////////////////////////////////////////////////////////
             StartDrawBackground: begin
-                //reset 
+                
                 //prepares to start the counter from 0-255
                 reset_counter255 <= 1;
                 writeMemory <= 0;
@@ -222,12 +244,11 @@ begin: state_transition_table
                 draw_enable_background <= 1;
                 reset_draw <= 0;
             end
-
-            
             /////////////////////////////////////////////////////////////////////////////////
 
         endcase
     end 
+
 
         // current_state registers
         always@(posedge clk)

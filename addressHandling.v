@@ -8,10 +8,9 @@
 //BRAM B1 (address_a, address_b, clock, data_a, data_b, rden_a, rden_b, wren_a, wren_b, q_a, q_b);
  //BRAM (address_a,address_b,clock,data_a,data_b,rden_a,rden_b,wren_a,wren_b,q_a,q_b);
 
- module addressCounter (clock, reset, enable, done, address, doneAll, LIMIT);
+ module addressCounter (clock, reset, enable, done, address, doneAll);
 
  	input clock, reset, enable, done;
-	input [10:0] LIMIT;
  	output reg [10:0] address;
 	output reg doneAll; 
 	
@@ -25,7 +24,7 @@
 		end
 		else if(enable && done) //
 		begin
-			if(address == LIMIT) begin
+			if(address == 255) begin
 				doneAll <= 1;
 				address <= 0;
 			end
