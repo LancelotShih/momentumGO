@@ -19,6 +19,7 @@ log -r {/*}
 add wave {topLevel/GB1/loadColour}
 add wave {topLevel/GB1/BS1/*}
 add wave {topLevel/GB1/current_state}
+add wave {topLevel/GB1/colour/}
 
 add wave {topLevel/D1/*}
 

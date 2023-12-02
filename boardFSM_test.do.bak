@@ -15,8 +15,9 @@ vsim -L altera_mf_ver topLevel
 
 #log all signals and add some signals to waveform window
 log -r {/*}
-add wave {/*}
+#add wave {/*}
 add wave {topLevel/GB1/loadColour}
+add wave {topLevel/GB1/BS1/*}
 add wave {topLevel/GB1/current_state}
 
 add wave {topLevel/D1/*}

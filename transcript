@@ -3725,3 +3725,4 @@ do boardFSM_test.do
 #    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
 # ** Warning: (vsim-3015) gameBoardFSM.v(42): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(416).
 #    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# unsigned
