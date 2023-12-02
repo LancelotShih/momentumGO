@@ -11,7 +11,7 @@
  module addressCounter (clock, reset, enable, done, address, doneAll);
 
  	input clock, reset, enable, done;
- 	output reg [10:0] address;
+ 	output reg [8:0] address;
 	output reg doneAll; 
 	
 	
@@ -57,19 +57,14 @@ endmodule
 module positionToPixel(positionX, positionY, pixelX, pixelY);
 
 	input[3:0] positionX, positionY;
-	output [10:0] pixelX, pixelY;
+	output [9:0] pixelX;
+	output [8:0] pixelY;
 
 	localparam SPACING = 2;
 	localparam WIDTH = 10;
-	if(positionX != 0 && positionY != 0)
-	begin 
-	assign pixelX = positionX * WIDTH + SPACING * (positionX - 1); 
-	assign pixelY = positionY * WIDTH + SPACING * (positionY - 1);
-	end
-	else
-	begin
-	assign pixelX = positionX;
-	assign pixelY = positionY;
-	end
+
+	assign pixelX = positionX * WIDTH + SPACING * (positionX) ; 
+	assign pixelY = positionY * WIDTH + SPACING * (positionY) ;
+	
 
 endmodule

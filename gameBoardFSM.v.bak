@@ -1,51 +1,145 @@
 
 
- module topLevel(CLOCK_50, KEY, LEDR, red_X, red_Y, blue_X , blue_Y, x, y, colour, plot_enable);
+    module topLevel
+    	(
+    		CLOCK_50,						//	On Board 50 MHz
+    		// Your inputs and outputs here
+    		KEY,							// On Board Keys
+    		// The ports below are for the VGA output.  Do not change.
+    		VGA_CLK,   						//	VGA Clock
+    		VGA_HS,							//	VGA H_SYNC
+    		VGA_VS,							//	VGA V_SYNC
+    		VGA_BLANK_N,						//	VGA BLANK
+    		VGA_SYNC_N,						//	VGA SYNC
+    		VGA_R,   						//	VGA Red[9:0]
+    		VGA_G,	 						//	VGA Green[9:0]
+    		VGA_B,   						//	VGA Blue[9:0]
+    		LEDR
+    	);
 
-	output wire [2:0] colour;
-	output wire [9:0] x;
-	output wire [8:0] y;
-	output [3:0] LEDR;
- output plot_enable;
+    	input			CLOCK_50;				//	50 MHz
+    	input	[3:0]	KEY;					
+    	// Declare your inputs and outputs here
+    	// Do not change the following outputs
+    	output			VGA_CLK;   				//	VGA Clock
+    	output			VGA_HS;					//	VGA H_SYNC
+    	output			VGA_VS;					//	VGA V_SYNC
+    	output			VGA_BLANK_N;				//	VGA BLANK
+    	output			VGA_SYNC_N;				//	VGA SYNC
+    	output	[7:0]	VGA_R;   				//	VGA Red[7:0] Changed from 10 to 8-bit DAC
+    	output	[7:0]	VGA_G;	 				//	VGA Green[7:0]
+    	output	[7:0]	VGA_B;   				//	VGA Blue[7:0]
+    	output [3:0]LEDR;
+	
+    	wire resetn;
+    	assign resetn = KEY[0];
+	
+    	// Create the colour, x, y and writeEn wires that are inputs to the controller.
+
+    	wire [2:0] colour;
+    	wire [9:0] x;
+    	wire [8:0] y;
+    	wire writeEn;
+
+    	// Create an Instance of a VGA controller - there can be only one!
+    	// Define the number of colours as well as the initial background
+    	// image file (.MIF) for the controller.
+    	vga_adapter VGA(
+    			.resetn(resetn),
+    			.clock(CLOCK_50),
+    			.colour(colour),
+    			.x(x),
+    			.y(y),
+    			.plot(plot_enable),
+    			/* Signals for the DAC to drive the monitor. */
+    			.VGA_R(VGA_R),
+    			.VGA_G(VGA_G),
+    			.VGA_B(VGA_B),
+    			.VGA_HS(VGA_HS),
+    			.VGA_VS(VGA_VS),
+    			.VGA_BLANK(VGA_BLANK_N),
+    			.VGA_SYNC(VGA_SYNC_N),
+    			.VGA_CLK(VGA_CLK));
+    		defparam VGA.RESOLUTION = "320x240";
+    		defparam VGA.MONOCHROME = "FALSE";
+    		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
+    		defparam VGA.BACKGROUND_IMAGE = "white.mif";
+			
+	
+        wire [2:0] loadColour;
+        wire readMemory, writeMemory;
+        wire[8:0] address_a, box_address;
+        wire draw_enable_background, draw_enable_foreground;
+        wire reset_draw_background, reset_draw_foreground;
+        wire finished;
+
+
+        wire[3:0] positionX, positionY;
+        wire[10:0] pixelX;
+        wire[10:0] pixelY;
+
+        reg[3:0] red_X = 1;
+        reg[3:0] red_Y = 1;
+        reg[3:0] blue_X = 4;
+        reg[3:0] blue_Y = 3;
+
+
+        gameBoardFSM GB1(.clock(CLOCK_50), .reset(!KEY[0]), .red_X(red_X), .red_Y(red_Y), .blue_X(blue_X), .blue_Y(blue_Y), .finished(finished), .loadColour(loadColour), .plot_enable(plot_enable), 
+        .writeMemory(writeMemory), .readMemory(readMemory), .address_a(address_a), .box_address(box_address), .draw_enable_background(draw_enable_background), .draw_enable_foreground(draw_enable_foreground), 
+        .reset_draw_background(reset_draw_background), .reset_draw_foreground(reset_draw_foreground));
+
+        BRAM B1(.address_a(address_a),.address_b(box_address),.clock(CLOCK_50),.data_a(loadColour), .data_b( ), .rden_a( ), .rden_b(readMemory), .wren_a(writeMemory), .wren_b( ), .q_a( ), .q_b(colou));
+
+        addressToPosition ATP1(.address(box_address), .positionX(positionX), .positionY(positionY));
+
+        positionToPixel PTP1(.positionX(positionX), .positionY(positionY), .pixelX(pixelX), .pixelY(pixelY));
+
+        draw_Back D1(.clock(CLOCK_50), .reset(reset_draw_background), .enable_draw(draw_enable_background), .initial_xPosition(pixelX), .initial_yPosition(pixelY), .xOutput(xOutput), .yOutput(yOutput), .finished(finished) );
+    endmodule
+
+//     module topLevel(CLOCK_50, KEY, LEDR, red_X, red_Y, blue_X , blue_Y, x, y, colour, plot_enable);
+
+// 	output wire [2:0] colour;
+// 	output wire [9:0] x;
+// 	output wire [8:0] y;
+// 	output [3:0] LEDR;
+//     output plot_enable;
 
 	
-	input CLOCK_50;
-	input [3:0] KEY;
-	input [3:0]red_X, red_Y, blue_X, blue_Y;
+// 	input CLOCK_50;
+// 	input [3:0] KEY;
+// 	input [3:0]red_X, red_Y, blue_X, blue_Y;
 
-     wire [2:0] loadColour;
-     wire readMemory, writeMemory;
-     wire[8:0] address_a, box_address;
-     wire draw_enable_background, draw_enable_foreground;
-     wire reset_draw_background, reset_draw_foreground;
-     wire finished;
-
-
-     wire[3:0] positionX, positionY;
-     wire[10:0] pixelX;
-     wire[10:0] pixelY;
-
-    wire filler, filler2;
-    wire [2:0] colourfiller, colourfiller2;
+//         wire [2:0] loadColour;
+//         wire readMemory, writeMemory;
+//         wire[8:0] address_a, box_address;
+//         wire draw_enable_background, draw_enable_foreground;
+//         wire reset_draw_background, reset_draw_foreground;
+//         wire finished;
 
 
-     gameBoardFSM GB1(.clock(CLOCK_50), .reset(!KEY[0]), .trigger(!KEY[3]), .red_X(red_X), .red_Y(red_Y), .blue_X(blue_X), .blue_Y(blue_Y), .finished(finished), .loadColour(loadColour), .plot_enable(plot_enable), 
-     .writeMemory(writeMemory), .readMemory(readMemory), .address_a(address_a), .box_address(box_address), .draw_enable_background(draw_enable_background), .draw_enable_foreground(draw_enable_foreground), 
-     .reset_draw_background(reset_draw_background), .reset_draw_foreground(reset_draw_foreground));
+//         wire[3:0] positionX, positionY;
+//         wire[10:0] pixelX;
+//         wire[10:0] pixelY;
 
-     BRAM B1(.address_a(address_a), .address_b(box_address), .clock(CLOCK_50), .data_a(loadColour), .data_b( colourfiller), .rden_a( filler), .rden_b(readMemory), .wren_a(writeMemory), .wren_b(filler2 ), .q_a(colourfiller2 ), .q_b(colour));
 
-     addressToPosition ATP1(.address(box_address), .positionX(positionX), .positionY(positionY));
+//         gameBoardFSM GB1(.clock(CLOCK_50), .reset(KEY[0]), .red_X(red_X), .red_Y(red_Y), .blue_X(blue_X), .blue_Y(blue_Y), .finished(finished), .loadColour(loadColour), .plot_enable(plot_enable), 
+//         .writeMemory(writeMemory), .readMemory(readMemory), .address_a(address_a), .box_address(box_address), .draw_enable_background(draw_enable_background), .draw_enable_foreground(draw_enable_foreground), 
+//         .reset_draw_background(reset_draw_background), .reset_draw_foreground(reset_draw_foreground));
 
-     positionToPixel PTP1(.positionX(positionX), .positionY(positionY), .pixelX(pixelX), .pixelY(pixelY));
+//         BRAM B1(.address_a(address_a),.address_b(box_address),.clock(CLOCK_50),.data_a(loadColour), .data_b( ), .rden_a( ), .rden_b(readMemory), .wren_a(writeMemory), .wren_b( ), .q_a( ), .q_b(colour));
 
-     draw_Back D1(.clock(CLOCK_50), .reset(reset_draw_background), .enable_draw(draw_enable_background), .initial_xPosition(pixelX), .initial_yPosition(pixelY), .xOutput(x), .yOutput(y), .finished(finished) );
+//         addressToPosition ATP1(.address(box_address), .positionX(positionX), .positionY(positionY));
 
-endmodule
+//         positionToPixel PTP1(.positionX(positionX), .positionY(positionY), .pixelX(pixelX), .pixelY(pixelY));
+
+//         draw_Back D1(.clock(CLOCK_50), .reset(reset_draw_background), .enable_draw(draw_enable_background), .initial_xPosition(pixelX), .initial_yPosition(pixelY), .xOutput(x), .yOutput(y), .finished(finished) );
+
+// endmodule
 
 
 module gameBoardFSM(
-                    clock, reset, trigger, LEDR,
+                    clock, reset, 
                     red_X, red_Y, blue_X, blue_Y, 
                     finished,
                    
@@ -58,18 +152,16 @@ module gameBoardFSM(
                     reset_draw_background, reset_draw_foreground
                     );
 
-input clock, reset, trigger;
+input clock, reset;
 input [3:0] red_X, red_Y, blue_X, blue_Y;
 input finished;
-output reg [9:0] LEDR;
 
-output reg [2:0] loadColour = 0;
-output reg plot_enable = 0;
+output reg [2:0] loadColour;
+output reg plot_enable;
 
 //BRAM/////////////////
-output reg writeMemory = 0;
-output reg readMemory= 0;
-output reg [8:0]address_a = 0;
+output reg writeMemory, readMemory;
+output reg [8:0]address_a;
 wire [8:0]red_address, blue_address; 
 //BRAM (.address_a(address_a),.address_b(box_address),.clock(clock),.data_a(loadColour), .data_b(NULL), .rden_a(NULL), .rden_b(readMemory), .wren_a(writeMemory), .wren_b(NULL), .q_a(NULL), .q_b(SEND TO VGA));
 positionToAddress RedPosToAddress(red_X, red_Y, red_address);
@@ -126,18 +218,14 @@ localparam Idle = 10'd0,
             frame5 = 10'd14;
 
 
-reg [10:0] current_state = 0;
-reg [10:0] next_state = 0;
+reg [10:0] current_state, next_state;
 ///////////////////////////////////////////
 
 always@(*)
 begin: state_transition_table
     case (current_state)
         Idle: begin
-				if(doneWriting)
-            next_state <= StartWritingRed;
-				else
-				next_state <= Idle;
+            next_state <= StartWritingRed; 
         end
 
         /////////////////////////////////////////////////////////////////////////////////
@@ -200,7 +288,8 @@ begin: state_transition_table
              3: begin next_state <= frame4; end
 
              4: begin next_state <= frame5; end
-    
+
+             5: begin next_state <= StartWritingRed; end      
             endcase
         end
 
@@ -234,7 +323,7 @@ begin: state_transition_table
 
         frame5: begin
             if(doneBuffer)
-            next_state <= Idle;
+            next_state <= StartDrawBackground;
             else 
             next_state <= frame5;
         end
@@ -244,68 +333,54 @@ begin: state_transition_table
     always @(*)
     begin: output_logic
         
-        address_a = 0;
-        loadColour = 3'b000;
-		  
-        writeMemory = 0;
-		
-        plot_enable = 0;
-		  
-        reset_counter255 = 0;
-        reset_short_buffer = 0;
-        reset_buffer = 0;
-        reset_draw_background = 0;
-        reset_draw_foreground = 0;
-		  
-		  LEDR[0] = 0;
-		  
+        address_a <= 0;
+        loadColour <= 3'b000;
+        writeMemory <= 0;
+        reset_counter255 <= 0;
+        reset_short_buffer <= 0;
+        reset_buffer <= 0;
+        reset_draw_background <= 0;
+        reset_draw_foreground <= 0;
 
         case (current_state)
 
             //writing states //////////////////////////////////////////////////////////
-				Idle: begin
-					short_buffer_enable = 1;
-					LEDR[0] = 1;
-				end
-				
             StartWritingRed: begin
-                lastFrame = 0;
-                writeMemory = 1;
-                reset_short_buffer = 1;
+                lastFrame <= 0;
+                writeMemory <= 1;
+                reset_short_buffer <= 1;
             end
 
             WriteRed: begin
-                writeMemory = 1;
-                short_buffer_enable = 1;
-                address_a = red_address; 
+                writeMemory <= 1;
+                short_buffer_enable <= 1;
+                address_a <= red_address; 
 
                 if(red_address == blue_address)begin
                     
-                    loadColour = 3'b111; 
+                    loadColour <= 3'b000; //let Yellow be NULL colour
                 end
                 else begin
-                    loadColour = 3'b100;
+                    loadColour <= 3'b100;
                 end
             end
 
             StartWritingBlue: begin
-                writeMemory = 1;
-                reset_short_buffer = 1;
-               
-                
+                writeMemory <= 1;
+                reset_short_buffer <= 1;
             end
 
             WriteBlue: begin
-                writeMemory = 1;
-                short_buffer_enable = 1;
-                address_a = blue_address;
+                writeMemory <= 1;
+                short_buffer_enable <= 1;
+                address_a <= blue_address;
                 
                 if(red_address == blue_address)begin
                     
-                    loadColour = 3'b111;
+                    loadColour <= 3'b000;
                 end
                 else begin
-                    loadColour = 3'b001;
+                    loadColour <= 3'b001;
                 end
             end
             ////////////////////////////////////////////////////////////////////////////
@@ -313,73 +388,72 @@ begin: state_transition_table
 
             //drawing background states /////////////////////////////////////////////////////////////
             StartDrawBackground: begin
+                
                 //prepares to start the counter from 0-255
-                short_buffer_enable = 0;
-                reset_counter255 = 1;
-                writeMemory = 0;
-                readMemory = 1; // there should be one read port with its corresponding address. 
-                plot_enable = 1;
+                short_buffer_enable <= 0;
+                reset_counter255 <= 1;
+                writeMemory <= 0;
+                readMemory <= 1; // there should be one read port with its corresponding address. 
+                plot_enable <= 1;
+
             end
 
             ResetBackgroundDraw: begin
                 //goes to this state upon receiving finished. Always sends back to Drawbackground.
-                reset_draw_background = 1;
-                draw_enable_background = 0;
+                reset_draw_background <= 1;
+                draw_enable_background <= 0;
             end
 
             DrawBackground: begin //either goes to Reset or goes to foreground if done all is high
-                count255_enable = 1;
-                plot_enable = 1; 
-                draw_enable_background = 1;
+
+                count255_enable <= 1;
+                plot_enable <= 1;
+                draw_enable_background <= 1;
+
             end
             /////////////////////////////////////////////////////////////////////////////////
 
 
             //drawing foreground frames//////////////////////////////////////////////////////
                 StartDrawForeground: begin
-                    draw_enable_background = 0;
-                    reset_draw_foreground = 1;
-                    count255_enable = 0;
-                    readMemory = 0;
+                    draw_enable_background <= 0;
+                    reset_draw_foreground <= 1;
+                    count255_enable <= 0;
+                    readMemory <= 0;
                 end
 
                 SelectFrame: begin
-                    reset_buffer = 1;
+                    reset_buffer <= 1;
                 end
                 
                 frame1: begin
-                    buffer_enable = 1;
-                    lastFrame = 1;
-                    draw_enable_foreground = 1;
-                    plot_enable = 1;
+                    buffer_enable <= 1;
+                    lastFrame <= 1;
+                    draw_enable_foreground <= 1;
                 end
 
                 frame2: begin
-                    buffer_enable = 1;
-                    lastFrame = 2;
-                    draw_enable_foreground = 1;
-                    
+                    buffer_enable <= 1;
+                    lastFrame <= 2;
+                    draw_enable_foreground <= 1;
                 end
 
                 frame3: begin
-                    buffer_enable = 1;
-                    lastFrame = 3;
-                    draw_enable_foreground = 1;
-                    
+                    buffer_enable <= 1;
+                    lastFrame <= 3;
+                    draw_enable_foreground <= 1;
                 end
 
                 frame4: begin
-                    buffer_enable = 1;
-                    lastFrame = 4;
-                    draw_enable_foreground = 1;
-                    
+                    buffer_enable <= 1;
+                    lastFrame <= 4;
+                    draw_enable_foreground <= 1;
                 end
 
                 frame5: begin
-                    buffer_enable = 1;
-                    lastFrame = 5;
-                    draw_enable_foreground = 1;
-                    
+                    buffer_enable <= 1;
+                    lastFrame <= 5;
+                    draw_enable_foreground <= 1;
                 end
 
 
@@ -400,18 +474,6 @@ begin: state_transition_table
     
 endmodule
 
-module rateDivider(clock50, clock25);
-
-    input clock50;
-    output reg clock25;
-
-    always @ (posedge clock50)
-    begin
-        clock25 <= ~clock25;
-    end
-
-
-endmodule
 
 module draw_Back(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOutput, yOutput, finished );
 	
@@ -495,7 +557,7 @@ module buffer(clk, reset, enable, done);
 
 		else if(enable)
 		begin
-			if(buffer_counter == 50000000/120 - 1) //60Hz = 50000000 / 60 - 1
+			if(buffer_counter == 50000000 - 1) //60Hz = 50000000 / 60 - 1
 			begin
 				done <= 1;
 				buffer_counter <= 0;
@@ -515,7 +577,7 @@ module buffer_short(clk, reset, enable, done);
 	input clk, reset, enable;
 	output reg done;
 
-	reg [5:0] buffer_counter = 0;
+	reg [3:0] buffer_counter = 0;
 
 	always@(posedge clk)
 	begin: pulse_time
@@ -527,7 +589,7 @@ module buffer_short(clk, reset, enable, done);
 
 		else if(enable)
 		begin
-			if(buffer_counter == 20)
+			if(buffer_counter == 5)
 			begin
 				done <= 1;
 				buffer_counter <= 0;
