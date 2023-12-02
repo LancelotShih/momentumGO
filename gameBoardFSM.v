@@ -258,7 +258,7 @@ begin: state_transition_table
         reset_draw_foreground = 0;
 		  
 		  LEDR[0] = 0;
-		  
+		  LEDR[1] = 0;
 
         case (current_state)
 
@@ -352,6 +352,7 @@ begin: state_transition_table
                     lastFrame = 1;
                     draw_enable_foreground = 1;
                     plot_enable = 1;
+						  LEDR[1] = 1;
                 end
 
                 frame2: begin
