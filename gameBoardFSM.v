@@ -351,7 +351,6 @@ begin: state_transition_table
                     buffer_enable = 1;
                     lastFrame = 1;
                     draw_enable_foreground = 1;
-                    plot_enable = 1;
 						  LEDR[1] = 1;
                 end
 
