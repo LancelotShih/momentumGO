@@ -1,76 +1,204 @@
+
+
+    // module topLevel
+    // 	(
+    // 		CLOCK_50,						//	On Board 50 MHz
+    // 		// Your inputs and outputs here
+    // 		KEY,							// On Board Keys
+    // 		// The ports below are for the VGA output.  Do not change.
+    // 		VGA_CLK,   						//	VGA Clock
+    // 		VGA_HS,							//	VGA H_SYNC
+    // 		VGA_VS,							//	VGA V_SYNC
+    // 		VGA_BLANK_N,						//	VGA BLANK
+    // 		VGA_SYNC_N,						//	VGA SYNC
+    // 		VGA_R,   						//	VGA Red[9:0]
+    // 		VGA_G,	 						//	VGA Green[9:0]
+    // 		VGA_B,   						//	VGA Blue[9:0]
+    // 		LEDR
+    // 	);
+
+    // 	input			CLOCK_50;				//	50 MHz
+    // 	input	[3:0]	KEY;					
+    // 	// Declare your inputs and outputs here
+    // 	// Do not change the following outputs
+    // 	output			VGA_CLK;   				//	VGA Clock
+    // 	output			VGA_HS;					//	VGA H_SYNC
+    // 	output			VGA_VS;					//	VGA V_SYNC
+    // 	output			VGA_BLANK_N;				//	VGA BLANK
+    // 	output			VGA_SYNC_N;				//	VGA SYNC
+    // 	output	[7:0]	VGA_R;   				//	VGA Red[7:0] Changed from 10 to 8-bit DAC
+    // 	output	[7:0]	VGA_G;	 				//	VGA Green[7:0]
+    // 	output	[7:0]	VGA_B;   				//	VGA Blue[7:0]
+    // 	output [3:0]LEDR;
+	
+    // 	wire resetn;
+    // 	assign resetn = KEY[0];
+	
+    // 	// Create the colour, x, y and writeEn wires that are inputs to the controller.
+
+    // 	wire [2:0] colour;
+    // 	wire [9:0] x;
+    // 	wire [8:0] y;
+    // 	wire writeEn;
+
+    // 	// Create an Instance of a VGA controller - there can be only one!
+    // 	// Define the number of colours as well as the initial background
+    // 	// image file (.MIF) for the controller.
+    // 	vga_adapter VGA(
+    // 			.resetn(resetn),
+    // 			.clock(CLOCK_50),
+    // 			.colour(colour),
+    // 			.x(x),
+    // 			.y(y),
+    // 			.plot(plot_enable),
+    // 			/* Signals for the DAC to drive the monitor. */
+    // 			.VGA_R(VGA_R),
+    // 			.VGA_G(VGA_G),
+    // 			.VGA_B(VGA_B),
+    // 			.VGA_HS(VGA_HS),
+    // 			.VGA_VS(VGA_VS),
+    // 			.VGA_BLANK(VGA_BLANK_N),
+    // 			.VGA_SYNC(VGA_SYNC_N),
+    // 			.VGA_CLK(VGA_CLK));
+    // 		defparam VGA.RESOLUTION = "320x240";
+    // 		defparam VGA.MONOCHROME = "FALSE";
+    // 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
+    // 		defparam VGA.BACKGROUND_IMAGE = "white.mif";
+			
+	
+
+    // 	//communication variables to VGA are colour, draw_enable
+    	
+
+
+    //     addressToPosition ATP1(.address(), .positionX(), .positionY());
+    //     positionToPixel PTP1(.positionX(), .positionY(), .pixelX(), .pixelY());
+    //     draw_Back D1(.clock(clock), .reset(reset_draw_background), .enable_draw(draw_enable_background), .initial_xPosition(), .initial_yPosition(), .xOutput(), .yOutput(), .finished() );
+    //     gameBoardFSM GB1(.clock(CLOCK_50), .reset(KEY[0]), .red_X(), .red_Y(), .blue_X(), .blue_Y(), .finished(), .loadColour(), .plot_enable(), .writeMemory(), .readMemory(), .address_a(), .box_address(), .draw_enable_background(), .draw_enable_foreground(), .reset_draw_background(), .reset_draw_foreground());
+
+    // 	assign LEDR[0] = plot_enable;
+
+    // endmodule
+
+    module topLevel(CLOCK_50, KEY, LEDR, red_X, red_Y, blue_X , blue_Y, xOutput, yOutput, oColour, plot_enable);
+
+	output wire [2:0] oColour;
+	output wire [9:0] xOutput;
+	output wire [8:0] yOutput;
+	output [3:0] LEDR;
+    output plot_enable;
+
+	
+	input CLOCK_50;
+	input [3:0] KEY;
+	input [3:0]red_X, red_Y, blue_X, blue_Y;
+
+        wire [2:0] loadColour;
+        wire readMemory, writeMemory;
+        wire[8:0] address_a, box_address;
+        wire draw_enable_background, draw_enable_foreground;
+        wire reset_draw_background, reset_draw_foreground;
+        wire finished;
+
+
+        wire[3:0] positionX, positionY;
+        wire[10:0] pixelX;
+        wire[10:0] pixelY;
+
+
+        gameBoardFSM GB1(.clock(CLOCK_50), .reset(KEY[0]), .red_X(red_X), .red_Y(red_Y), .blue_X(blue_X), .blue_Y(blue_Y), .finished(finished), .loadColour(loadColour), .plot_enable(plot_enable), 
+        .writeMemory(writeMemory), .readMemory(readMemory), .address_a(address_a), .box_address(box_address), .draw_enable_background(draw_enable_background), .draw_enable_foreground(draw_enable_foreground), 
+        .reset_draw_background(reset_draw_background), .reset_draw_foreground(reset_draw_foreground));
+
+        BRAM B1(.address_a(address_a),.address_b(box_address),.clock(CLOCK_50),.data_a(loadColour), .data_b( ), .rden_a( ), .rden_b(readMemory), .wren_a(writeMemory), .wren_b( ), .q_a( ), .q_b(oColour));
+
+        addressToPosition ATP1(.address(box_address), .positionX(positionX), .positionY(positionY));
+
+        positionToPixel PTP1(.positionX(positionX), .positionY(positionY), .pixelX(pixelX), .pixelY(pixelY));
+
+        draw_Back D1(.clock(CLOCK_50), .reset(reset_draw_background), .enable_draw(draw_enable_background), .initial_xPosition(pixelX), .initial_yPosition(pixelY), .xOutput(xOutput), .yOutput(yOutput), .finished(finished) );
+
+endmodule
+
+
 module gameBoardFSM(
                     clock, reset, 
                     red_X, red_Y, blue_X, blue_Y, 
                     finished,
                    
-                    oColour, plot_enable,
+                    loadColour, plot_enable,
 
                     writeMemory, readMemory, 
-                    address_a,
+                    address_a, box_address,
 
-                    draw_enable_background, draw_enable_foreground //these shall enable their respective draw counters and MUX to the VGA. Foreground things will communicate directly with bomb module and playerFSM
+                    draw_enable_background, draw_enable_foreground, //these shall enable their respective draw counters and MUX to the VGA. Foreground things will communicate directly with bomb module and playerFSM
+                    reset_draw_background, reset_draw_foreground
                     );
 
 input clock, reset;
 input [3:0] red_X, red_Y, blue_X, blue_Y;
 input finished;
 
-output [2:0] oColour;
-output plot_enable;
+output reg [2:0] loadColour;
+output reg plot_enable;
 
 //BRAM/////////////////
-output writeMemory, readMemory; draw_enable_background, draw_enable_foreground;
-output address_a;
+output reg writeMemory, readMemory;
+output reg [8:0]address_a;
 wire [8:0]red_address, blue_address; 
-
+//BRAM (.address_a(address_a),.address_b(box_address),.clock(clock),.data_a(loadColour), .data_b(NULL), .rden_a(NULL), .rden_b(readMemory), .wren_a(writeMemory), .wren_b(NULL), .q_a(NULL), .q_b(SEND TO VGA));
 positionToAddress RedPosToAddress(red_X, red_Y, red_address);
 positionToAddress BluePosToAddress(blue_X, blue_Y, blue_address);
 
-//since when we read it, we need an address port, we can only use one
-
+//since when we read it, we need an address port, we can only use one so that the other can be for write
+// [ ADDRESS PORT A: WRITING PORT | ADDRESS PORT B: READING PORT ]
 ////////////////////////
 
+
 //DRAW///
-output draw_enable_background, draw_enable_foreground;
+output reg draw_enable_background, draw_enable_foreground, reset_draw_background, reset_draw_foreground;
+
 ///
+
 
 //BUFFER////////////////////////////////////////////////
 wire doneWriting, doneBuffer; //corresponding to short buffer and buffer respectively
 reg reset_buffer, buffer_enable;
 reg reset_short_buffer, short_buffer_enable;
-
-
 buffer_short BS1(.clk(clock), .reset(reset_short_buffer), .enable(short_buffer_enable), .done(doneWriting));
 buffer B1(.clk(clock), .reset(reset_buffer), .enable(buffer_enable), .done(doneBuffer));
 //////////////////////////////////////////////////////////
 
+
 //Counter255/////////////////////////////////////////////
 reg reset_counter255, count255_enable;  
-wire [10:0] box_address;
+output [8:0] box_address;
 wire doneBackground;
 
 addressCounter AC1(.clock(clock), .reset(reset_counter255), .enable(count255_enable), .done(finished), .address(box_address), .doneAll(doneBackground));
 ////////////////////////////////////////////////////////////
 
+ //foreground last frame tracker
+    reg [3:0] lastFrame = 0;
+//
 
-
-reg [2:0] data_a; //RED
-reg [2:0] data_b; //BLUE
 
 // FSM STATES //////////////////////////
 localparam Idle = 10'd0,
-            StartWriting = 10'd1,
+            StartWritingRed = 10'd1,
             WriteRed = 10'd2,
-            WriteBlue = 10'd3 ,
-            StartDrawBackground = 10'd4 ,
-            DrawBackground = 10'd5,
-            StartDrawForeground = 10'd6 ,
-            DrawForeground = 10'd7,
-            frame1 = 10'd8,
-            frame2 = 10'd9,
-            frame3 = 10'd10,
-            frame4 = 10'd11,
-            frame5 = 10'd12;
+            StartWritingBlue = 10'd3,
+            WriteBlue = 10'd4 ,
+            StartDrawBackground = 10'd5 ,
+            ResetBackgroundDraw = 10'd6 ,
+            DrawBackground = 10'd7,
+            StartDrawForeground = 10'd8 ,
+            SelectFrame = 10'd9,
+            frame1 = 10'd10,
+            frame2 = 10'd11,
+            frame3 = 10'd12,
+            frame4 = 10'd13,
+            frame5 = 10'd14;
 
 
 reg [10:0] current_state, next_state;
@@ -80,7 +208,7 @@ always@(*)
 begin: state_transition_table
     case (current_state)
         Idle: begin
-            next_state <= WriteBoard; 
+            next_state <= StartWritingRed; 
         end
 
         /////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +229,7 @@ begin: state_transition_table
 
         WriteBlue: begin
             if(doneWriting)
-            next_state <= DrawBackground;
+            next_state <= StartDrawBackground;
             else
             next_state <= WriteBlue;
         end
@@ -112,101 +240,111 @@ begin: state_transition_table
         end
 
         ResetBackgroundDraw: begin
-            next_state <= Drawbackground;
+            next_state <= DrawBackground;
         end
 
         DrawBackground: begin
             // note that the frames must hold their done signal up and the next state needs to turn it off
-            if (doneframe1 && doneBackground)
-            next_state <= frame2;
-            else if (doneframe2 && doneBackground)
-            next_state <= frame3;
-            else if (doneframe3 && doneBackground)
-            next_state <= frame4;
-            else if(doneframe4 && doneBackground)
-            next_state <= frame5;
-            else if (doneframe5 && doneBackground )
-            next_state <= DrawForeground;
-            else if(doneBackground)
-            next_state <= DrawForeground; // all boxes drawn
+            
+            if(doneBackground)
+            next_state <= StartDrawForeground; // all boxes drawn
             else if(finished)
             next_state <= ResetBackgroundDraw; //1 box drawn
             else 
-            next_state <= Drawbackground;
+            next_state <= DrawBackground;
         end
         /////////////////////////////////////////////////////////////////////////////////
 
-        DrawForeground: begin
-            if(startFrame1)
-            next_state <= frame1;
-            else
-            next_state <= DrawForeground;
+        StartDrawForeground: begin
+            next_state <= SelectFrame; 
+        end
+
+        SelectFrame: begin
+            
+            case(lastFrame)
+             0: begin next_state <= frame1; end
+
+             1: begin next_state <= frame2; end
+
+             2: begin next_state <= frame3; end
+
+             3: begin next_state <= frame4; end
+
+             4: begin next_state <= frame5; end
+
+             5: begin next_state <= StartWritingRed; end      
+            endcase
         end
 
         frame1: begin
-            if(doneframe1)
-            next_state <= DrawBackground;
+            if(doneBuffer)
+            next_state <= StartDrawForeground;
             else 
             next_state <= frame1;
         end
 
         frame2:begin
-            if(doneframe2)
-            next_state <= DrawBackground;
+            if(doneBuffer)
+            next_state <= StartDrawForeground;
             else 
             next_state <= frame2;
         end
 
         frame3: begin
-            if(doneframe3)
-            next_state <= DrawBackground;
+            if(doneBuffer)
+            next_state <= StartDrawForeground;
             else 
             next_state <= frame3;
         end
 
         frame4: begin
-            if(doneframe4)
-            next_state <= DrawBackground;
+            if(doneBuffer)
+            next_state <= StartDrawForeground;
             else 
             next_state <= frame4;
         end
 
         frame5: begin
-            if(doneframe5)
-            next_state <= DrawBackground;
+            if(doneBuffer)
+            next_state <= StartDrawForeground;
             else 
             next_state <= frame5;
         end
-    endcase
-
-    //BRAM (address_a,address_b,clock,data_a,data_b,rden_a,rden_b,wren_a,wren_b,q_a,q_b);
+        endcase
+    end
 
     always @(*)
     begin: output_logic
-        // By default make all our signals 0
         
+        address_a <= 0;
+        loadColour <= 3'b000;
+        writeMemory <= 0;
+        reset_counter255 <= 0;
+        reset_short_buffer <= 0;
+        reset_buffer <= 0;
+        reset_draw_background <= 0;
+        reset_draw_foreground <= 0;
 
         case (current_state)
 
             //writing states //////////////////////////////////////////////////////////
             StartWritingRed: begin
+                lastFrame <= 0;
                 writeMemory <= 1;
                 reset_short_buffer <= 1;
             end
 
             WriteRed: begin
                 writeMemory <= 1;
-                reset_short_buffer <= 0;
                 short_buffer_enable <= 1;
-
                 address_a <= red_address; 
 
                 if(red_address == blue_address)begin
                     
-                    data_a <= 3'b110; //let Yellow be NULL colour
+                    loadColour <= 3'b000; //let Yellow be NULL colour
                 end
                 else begin
-                    data_a <= 3'b100;
+                    loadColour <= 3'b100;
                 end
             end
 
@@ -217,17 +355,15 @@ begin: state_transition_table
 
             WriteBlue: begin
                 writeMemory <= 1;
-                reset_short_buffer <= 0;
-                short_buffer_enable <= 1
-
+                short_buffer_enable <= 1;
                 address_a <= blue_address;
                 
                 if(red_address == blue_address)begin
                     
-                    data_b <= 3'b110;
+                    loadColour <= 3'b000;
                 end
                 else begin
-                    data_b <= 3'b001;
+                    loadColour <= 3'b001;
                 end
             end
             ////////////////////////////////////////////////////////////////////////////
@@ -237,6 +373,7 @@ begin: state_transition_table
             StartDrawBackground: begin
                 
                 //prepares to start the counter from 0-255
+                short_buffer_enable <= 0;
                 reset_counter255 <= 1;
                 writeMemory <= 0;
                 readMemory <= 1; // there should be one read port with its corresponding address. 
@@ -246,25 +383,70 @@ begin: state_transition_table
 
             ResetBackgroundDraw: begin
                 //goes to this state upon receiving finished. Always sends back to Drawbackground.
-                reset_draw <= 1;
+                reset_draw_background <= 1;
                 draw_enable_background <= 0;
-                reset_counter255 <= 0;
             end
 
             DrawBackground: begin //either goes to Reset or goes to foreground if done all is high
+
                 count255_enable <= 1;
                 plot_enable <= 1;
                 draw_enable_background <= 1;
-                reset_draw <= 0;
+
             end
             /////////////////////////////////////////////////////////////////////////////////
 
+
+            //drawing foreground frames//////////////////////////////////////////////////////
+                StartDrawForeground: begin
+                    draw_enable_background <= 0;
+                    reset_draw_foreground <= 1;
+                    count255_enable <= 0;
+                    readMemory <= 0;
+                end
+
+                SelectFrame: begin
+                    reset_buffer <= 1;
+                end
+                
+                frame1: begin
+                    buffer_enable <= 1;
+                    lastFrame <= 1;
+                    draw_enable_foreground <= 1;
+                end
+
+                frame2: begin
+                    buffer_enable <= 1;
+                    lastFrame <= 2;
+                    draw_enable_foreground <= 1;
+                end
+
+                frame3: begin
+                    buffer_enable <= 1;
+                    lastFrame <= 3;
+                    draw_enable_foreground <= 1;
+                end
+
+                frame4: begin
+                    buffer_enable <= 1;
+                    lastFrame <= 4;
+                    draw_enable_foreground <= 1;
+                end
+
+                frame5: begin
+                    buffer_enable <= 1;
+                    lastFrame <= 5;
+                    draw_enable_foreground <= 1;
+                end
+
+
+            /////////////////////////////////////////////////////////////////////////////////
         endcase
     end 
 
 
         // current_state registers
-        always@(posedge clk)
+        always@(posedge clock)
         begin: state_FFs
             if(reset) begin
                 current_state <= Idle;
@@ -272,13 +454,13 @@ begin: state_transition_table
             else
                 current_state <= next_state;
         end // state_FFS
-    end
+    
 endmodule
 
 
-module draw(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOutput, yOutput, finished );
+module draw_Back(clock, reset, enable_draw, initial_xPosition, initial_yPosition, xOutput, yOutput, finished );
 	
-	localparam WIDTH = 10'd40;
+	localparam WIDTH = 10'd10;
 	
 	input clock, reset;
 	input enable_draw;
@@ -358,7 +540,7 @@ module buffer(clk, reset, enable, done);
 
 		else if(enable)
 		begin
-			if(buffer_counter == 50000000 - 1) //60Hz = 50000000 / 60 - 1
+			if(buffer_counter == 50000000/60 - 1) //60Hz = 50000000 / 60 - 1
 			begin
 				done <= 1;
 				buffer_counter <= 0;

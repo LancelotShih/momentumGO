@@ -17,7 +17,7 @@
 	
 	always@(posedge clock) 
 	begin: address_counter
-		if(reset || doneAll)
+		if(reset)
 		begin
 			doneAll <= 0;
 			address <= 0;
@@ -59,10 +59,17 @@ module positionToPixel(positionX, positionY, pixelX, pixelY);
 	input[3:0] positionX, positionY;
 	output [10:0] pixelX, pixelY;
 
-	localparam SPACING = 5;
-	localparam WIDTH = 20;
-
+	localparam SPACING = 2;
+	localparam WIDTH = 10;
+	if(positionX != 0 && positionY != 0)
+	begin 
 	assign pixelX = positionX * WIDTH + SPACING * (positionX - 1); 
 	assign pixelY = positionY * WIDTH + SPACING * (positionY - 1);
+	end
+	else
+	begin
+	assign pixelX = positionX;
+	assign pixelY = positionY;
+	end
 
 endmodule

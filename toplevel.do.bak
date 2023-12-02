@@ -14,6 +14,7 @@ log -r {/*}
 add wave {/*}
 add wave {/topLevel/B1/b1/*} 
 add wave {/topLevel/B1/*} 
+add wave {/topLevel/D1/*}
 
 
 radix -unsigned
@@ -29,4 +30,4 @@ run 30 ns
 force {KEY[1]} {1}
 run 50 ns
 
-run 3 ms
+run 3000 ms

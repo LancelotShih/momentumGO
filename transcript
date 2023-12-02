@@ -173,3 +173,1915 @@ do toplevel.do
 # Loading work.simpleBoardFSM
 # Loading work.buffer
 # unsigned
+pwd
+# C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 09:52:24 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module gameBoardFSM
+# ** Error: (vlog-13069) gameBoardFSM.v(24): near ",": syntax error, unexpected ','.
+# ** Error: gameBoardFSM.v(24): (vlog-13205) Syntax error found in the scope following 'draw_enable_background'. Is there a missing '::'?
+# End time: 09:52:24 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./boardFSM_test.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog gameBoardFSM.v "
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 09:52:43 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module gameBoardFSM
+# ** Error: gameBoardFSM.v(81): (vlog-2730) Undefined variable: 'WriteBoard'.
+# ** Error: gameBoardFSM.v(85): (vlog-2730) Undefined variable: 'StartWritingRed'.
+# ** Error: gameBoardFSM.v(90): (vlog-2730) Undefined variable: 'StartWritingBlue'.
+# ** Error: gameBoardFSM.v(109): (vlog-2730) Undefined variable: 'ResetBackgroundDraw'.
+# ** Error: gameBoardFSM.v(113): (vlog-2730) Undefined variable: 'Drawbackground'.
+# ** Error: gameBoardFSM.v(118): (vlog-2730) Undefined variable: 'doneframe1'.
+# ** Error: gameBoardFSM.v(120): (vlog-2730) Undefined variable: 'doneframe2'.
+# ** Error: gameBoardFSM.v(122): (vlog-2730) Undefined variable: 'doneframe3'.
+# ** Error: gameBoardFSM.v(124): (vlog-2730) Undefined variable: 'doneframe4'.
+# ** Error: gameBoardFSM.v(126): (vlog-2730) Undefined variable: 'doneframe5'.
+# ** Error: gameBoardFSM.v(138): (vlog-2730) Undefined variable: 'startFrame1'.
+# ** Error: (vlog-13069) gameBoardFSM.v(182): near "always": syntax error, unexpected always.
+# ** Error: gameBoardFSM.v(196): A label for a block can be specified before 'begin' only in SystemVerilog.
+# ** Error: (vlog-13069) gameBoardFSM.v(196): near "<=": syntax error, unexpected <=.
+# ** Error: gameBoardFSM.v(196): (vlog-13205) Syntax error found in the scope following 'writeMemory'. Is there a missing '::'?
+# End time: 09:52:43 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 15, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./boardFSM_test.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog gameBoardFSM.v "
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 10:26:05 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module gameBoardFSM
+# ** Error: (vlog-13057) gameBoardFSM.v(66): Expecting numeric digits.
+# ** Error: gameBoardFSM.v(127): (vlog-2730) Undefined variable: 'Drawbackground'.
+# ** Error: gameBoardFSM.v(137): (vlog-2730) Undefined variable: 'lastFrame'.
+# ** Error: (vlog-13069) gameBoardFSM.v(231): near "address_a": syntax error, unexpected IDENTIFIER, expecting ';'.
+# ** Error: gameBoardFSM.v(257): (vlog-2730) Undefined variable: 'reset_draw'.
+# ** Error: gameBoardFSM.v(279): (vlog-2730) Undefined variable: 'DrawForeground'.
+# ** Error: gameBoardFSM.v(320): (vlog-2730) Undefined variable: 'clk'.
+# ** Error: (vlog-13069) gameBoardFSM.v(328): near "end": syntax error, unexpected end.
+# ** Error: gameBoardFSM.v(343): Port mode is incompatible with declaration: finished
+# ** Error: gameBoardFSM.v(8): (vlog-2730) Undefined variable: 'oColour'.
+# ** Error: gameBoardFSM.v(8): Identifier must be declared with a port mode: oColour.
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# End time: 10:26:05 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 11, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./boardFSM_test.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog gameBoardFSM.v "
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 10:32:53 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module gameBoardFSM
+# ** Error: gameBoardFSM.v(268): (vlog-2730) Undefined variable: 'reset_draw'.
+# ** Error: gameBoardFSM.v(281): (vlog-2730) Undefined variable: 'DrawForeground'.
+# ** Error: gameBoardFSM.v(328): (vlog-2730) Undefined variable: 'clk'.
+# -- Compiling module draw
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# End time: 10:32:53 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./boardFSM_test.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog gameBoardFSM.v "
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 10:35:13 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module gameBoardFSM
+# ** Error: gameBoardFSM.v(204): (vlog-2110) Illegal reference to net "writeMemory".
+# ** Error: gameBoardFSM.v(209): (vlog-2110) Illegal reference to net "writeMemory".
+# ** Error: gameBoardFSM.v(212): (vlog-2110) Illegal reference to net "address_a".
+# ** Error: gameBoardFSM.v(224): (vlog-2110) Illegal reference to net "writeMemory".
+# ** Error: gameBoardFSM.v(229): (vlog-2110) Illegal reference to net "writeMemory".
+# ** Error: gameBoardFSM.v(232): (vlog-2110) Illegal reference to net "address_a".
+# ** Error: gameBoardFSM.v(250): (vlog-2110) Illegal reference to net "writeMemory".
+# ** Error: gameBoardFSM.v(251): (vlog-2110) Illegal reference to net "readMemory".
+# ** Error: gameBoardFSM.v(252): (vlog-2110) Illegal reference to net "plot_enable".
+# ** Error: gameBoardFSM.v(258): (vlog-2110) Illegal reference to net "reset_draw_background".
+# ** Error: gameBoardFSM.v(259): (vlog-2110) Illegal reference to net "draw_enable_background".
+# ** Error: gameBoardFSM.v(264): (vlog-2110) Illegal reference to net "reset_draw_background".
+# ** Error: gameBoardFSM.v(266): (vlog-2110) Illegal reference to net "plot_enable".
+# ** Error: gameBoardFSM.v(267): (vlog-2110) Illegal reference to net "draw_enable_background".
+# ** Error: gameBoardFSM.v(268): (vlog-2110) Illegal reference to net "reset_draw_background".
+# ** Error: gameBoardFSM.v(275): (vlog-2110) Illegal reference to net "draw_enable_background".
+# ** Error: gameBoardFSM.v(276): (vlog-2110) Illegal reference to net "reset_draw_foreground".
+# ** Error: gameBoardFSM.v(278): (vlog-2110) Illegal reference to net "readMemory".
+# ** Error: gameBoardFSM.v(283): (vlog-2110) Illegal reference to net "reset_draw_foreground".
+# ** Error: gameBoardFSM.v(290): (vlog-2110) Illegal reference to net "draw_enable_foreground".
+# ** Error: gameBoardFSM.v(297): (vlog-2110) Illegal reference to net "draw_enable_foreground".
+# ** Error: gameBoardFSM.v(304): (vlog-2110) Illegal reference to net "draw_enable_foreground".
+# ** Error: gameBoardFSM.v(311): (vlog-2110) Illegal reference to net "draw_enable_foreground".
+# ** Error: gameBoardFSM.v(318): (vlog-2110) Illegal reference to net "draw_enable_foreground".
+# -- Compiling module draw
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# End time: 10:35:13 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 24, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./boardFSM_test.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog gameBoardFSM.v "
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 10:36:20 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module gameBoardFSM
+# ** Error (suppressible): gameBoardFSM.v(38): (vlog-2388) 'draw_enable_background' already declared in this scope (gameBoardFSM).
+# ** Error (suppressible): gameBoardFSM.v(38): (vlog-2388) 'draw_enable_foreground' already declared in this scope (gameBoardFSM).
+# -- Compiling module draw
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# End time: 10:36:20 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./boardFSM_test.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog gameBoardFSM.v "
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 10:37:03 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	gameBoardFSM
+# 	draw
+# End time: 10:37:03 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 10:37:08 on Dec 01,2023, Elapsed time: 20:17:05
+# Errors: 73, Warnings: 0
+# vsim gameBoardFSM 
+# Start time: 10:37:08 on Dec 01,2023
+# Loading work.gameBoardFSM
+# ** Error: (vsim-3033) gameBoardFSM.v(29): Instantiation of 'positionToAddress' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /gameBoardFSM File: gameBoardFSM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# ** Error: (vsim-3033) gameBoardFSM.v(30): Instantiation of 'positionToAddress' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /gameBoardFSM File: gameBoardFSM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Loading work.buffer_short
+# Loading work.buffer
+# ** Error: (vsim-3033) gameBoardFSM.v(56): Instantiation of 'addressCounter' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /gameBoardFSM File: gameBoardFSM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 10
+pwd
+# C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 10:39:25 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	gameBoardFSM
+# 	draw
+# End time: 10:39:25 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 10:39:26 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 10:39:26 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim gameBoardFSM 
+# Start time: 10:37:08 on Dec 01,2023
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# unsigned
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:31 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 12:52:31 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:32 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 12:52:32 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 12:52:36 on Dec 01,2023, Elapsed time: 2:15:28
+# Errors: 3, Warnings: 0
+# vsim topLevel 
+# Start time: 12:52:36 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# ** Error: (vsim-3033) gameBoardFSM.v(112): Instantiation of 'BRAM' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel File: gameBoardFSM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 11
+pwd
+# C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:42 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 12:53:42 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:42 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 12:53:42 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:42 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 12:53:42 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 12:52:36 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# ** Error: (vsim-3033) BRAM.v(80): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 12
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:57:38 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 12:57:39 on Dec 01,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:57:39 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 12:57:39 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L altera_mf_ver <BRAM> 
+# Start time: 12:52:36 on Dec 01,2023
+# ** Error: (vsim-3170) Could not find '<BRAM>'.
+#         Searched libraries:
+#             C:/intelFPGA/18.1/modelsim_ase/altera/verilog/altera_mf
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 9
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:58:09 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 12:58:09 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:58:09 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 12:58:09 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L altera_mf_ver <BRAM.v> 
+# Start time: 12:52:36 on Dec 01,2023
+# ** Error: (vsim-3170) Could not find '<BRAM.v>'.
+#         Searched libraries:
+#             C:/intelFPGA/18.1/modelsim_ase/altera/verilog/altera_mf
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 9
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:58:33 on Dec 01,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module november28printtest
+# ** Error (suppressible): november28printtest.v(72): (vlog-2388) 'plot_enable' already declared in this scope (november28printtest).
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# End time: 12:58:33 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./toplevel.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog november28printtest.v"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:00:48 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:00:48 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:00:48 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:00:48 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L altera_mf_ver BRAM 
+# Start time: 12:52:36 on Dec 01,2023
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# End time: 13:00:54 on Dec 01,2023, Elapsed time: 0:08:18
+# Errors: 4, Warnings: 0
+# vsim topLevel 
+# Start time: 13:00:54 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# ** Error: (vsim-3033) BRAM.v(80): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 12
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:15:45 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:15:45 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:15:45 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:15:45 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 13:00:54 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# ** Error: (vsim-3033) BRAM.v(80): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 12
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:17:41 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:17:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:17:41 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:17:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 13:00:54 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# ** Error: (vsim-3033) BRAM.v(80): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 12
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:18:17 on Dec 01,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module november28printtest
+# ** Error (suppressible): november28printtest.v(72): (vlog-2388) 'plot_enable' already declared in this scope (november28printtest).
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# End time: 13:18:17 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./toplevel.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog november28printtest.v"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:18:23 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:18:23 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:18:23 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:18:23 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 13:00:54 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# ** Error: (vsim-3033) BRAM.v(80): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 12
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:19:41 on Dec 01,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module november28printtest
+# ** Error (suppressible): november28printtest.v(72): (vlog-2388) 'plot_enable' already declared in this scope (november28printtest).
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# End time: 13:19:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./toplevel.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog november28printtest.v"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:19:45 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:19:45 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:19:45 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:19:45 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:19:45 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:19:45 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L altera_mf_ver BRAM 
+# Start time: 13:00:54 on Dec 01,2023
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# End time: 13:19:52 on Dec 01,2023, Elapsed time: 0:18:58
+# Errors: 4, Warnings: 0
+# vsim -L altsyncram BRAMvsim topLevel 
+# Start time: 13:19:52 on Dec 01,2023
+# ** Error: (vsim-3170) Could not find 'BRAMvsim'.
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 14
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:20:27 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:20:27 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:20:27 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:20:27 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:20:27 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:20:27 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L altera_mf_ver BRAM 
+# Start time: 13:19:52 on Dec 01,2023
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# End time: 13:20:32 on Dec 01,2023, Elapsed time: 0:00:40
+# Errors: 1, Warnings: 0
+# vsim -L altsyncram BRAM 
+# Start time: 13:20:32 on Dec 01,2023
+# Loading work.BRAM
+# ** Error (suppressible): (vsim-19) Failed to access library 'altsyncram' at "altsyncram".
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vsim-3033) BRAM.v(80): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /BRAM File: BRAM.v
+#         Searched libraries:
+# ** Error (suppressible): (vsim-19) Failed to access library 'altsyncram' at "altsyncram".
+# No such file or directory. (errno = ENOENT)
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 14
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:20:55 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:20:55 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:20:55 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:20:56 on Dec 01,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:20:56 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:20:56 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L altera_mf_ver BRAM 
+# Start time: 13:20:32 on Dec 01,2023
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# unsigned
+# ** Error (suppressible): (vsim-4008) Object 'reset' not found.
+# Error in macro ./boardFSM_test.do line 23
+# ** Error (suppressible): (vsim-4008) Object 'reset' not found.
+# 
+#     while executing
+# "force {reset} {1}"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:22:56 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:22:56 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:22:56 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:22:56 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:22:56 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:22:56 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:22:59 on Dec 01,2023, Elapsed time: 0:02:27
+# Errors: 4, Warnings: 0
+# vsim -L altera_mf_ver BRAM 
+# Start time: 13:22:59 on Dec 01,2023
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# unsigned
+# ** Error (suppressible): (vsim-4008) Object 'KEY[0]' not found.
+# Error in macro ./boardFSM_test.do line 23
+# ** Error (suppressible): (vsim-4008) Object 'KEY[0]' not found.
+# 
+#     while executing
+# "force {KEY[0]} {1}"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:30:00 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:30:00 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:30:00 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:30:00 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:30:00 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:30:00 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:30:05 on Dec 01,2023, Elapsed time: 0:07:06
+# Errors: 1, Warnings: 0
+# vsim -L altera_mf_ver BRAM 
+# Start time: 13:30:05 on Dec 01,2023
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# unsigned
+# ** Error (suppressible): (vsim-4008) Object 'KEY[0]' not found.
+# Error in macro ./boardFSM_test.do line 23
+# ** Error (suppressible): (vsim-4008) Object 'KEY[0]' not found.
+# 
+#     while executing
+# "force {KEY[0]} {1}"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:30:50 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:30:50 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:30:50 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:30:51 on Dec 01,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:30:51 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:30:51 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:30:53 on Dec 01,2023, Elapsed time: 0:00:48
+# Errors: 1, Warnings: 0
+# vsim -L altera_mf_ver BRAM 
+# Start time: 13:30:54 on Dec 01,2023
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# End time: 13:30:59 on Dec 01,2023, Elapsed time: 0:00:05
+# Errors: 0, Warnings: 0
+# vsim topLevel 
+# Start time: 13:30:59 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# ** Error: (vsim-3033) BRAM.v(80): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+#         Searched libraries:
+#             C:/Users/Ryan/Documents/UofT_Y2S1/DIGITAL_SYSTEMS_LAB_ASSIGNMENTS/momentumGO/work
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./boardFSM_test.do PAUSED at line 14
+do toplevel.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:31:13 on Dec 01,2023
+# vlog -reportprogress 300 november28printtest.v 
+# -- Compiling module november28printtest
+# ** Error (suppressible): november28printtest.v(72): (vlog-2388) 'plot_enable' already declared in this scope (november28printtest).
+# -- Compiling module positionReceiver
+# -- Compiling module addressToScreenPosition
+# -- Compiling module draw
+# -- Compiling module simpleBoardFSM
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# End time: 13:31:13 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./toplevel.do line 7
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog november28printtest.v"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:31:14 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:31:14 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:31:15 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:31:15 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:31:15 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:31:15 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L altera_mf_ver topLevel 
+# Start time: 13:30:59 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3017) gameBoardFSM.v(108): [TFMPC] - Too few port connections. Expected 18, found 17.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(108): [PCDPC] - Port size (9) does not match connection size (1) for port 'address_a'. The port definition is at: gameBoardFSM.v(131).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(108): [PCDPC] - Port size (11) does not match connection size (1) for port 'box_address'. The port definition is at: gameBoardFSM.v(131).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(112): [PCDPC] - Port size (8) does not match connection size (1) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(112): [PCDPC] - Port size (8) does not match connection size (1) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(114): [PCDPC] - Port size (9) does not match connection size (1) for port 'address'. The port definition is at: addressHandling.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/ATP1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(116): [PCDPC] - Port size (11) does not match connection size (10) for port 'pixelX'. The port definition is at: addressHandling.v(57).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/PTP1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(116): [PCDPC] - Port size (11) does not match connection size (9) for port 'pixelY'. The port definition is at: addressHandling.v(57).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/PTP1 File: addressHandling.v
+# unsigned
+# ** Error (suppressible): (vsim-4008) Object 'clock' not found.
+# Error in macro ./boardFSM_test.do line 22
+# ** Error (suppressible): (vsim-4008) Object 'clock' not found.
+# 
+#     while executing
+# "force {clock} 0 0ns, 1 10ns -repeat 20ns"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:31:40 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:31:40 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:31:40 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:31:41 on Dec 01,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:31:41 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:31:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:31:44 on Dec 01,2023, Elapsed time: 0:00:45
+# Errors: 2, Warnings: 8
+# vsim -L altera_mf_ver topLevel 
+# Start time: 13:31:44 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3017) gameBoardFSM.v(108): [TFMPC] - Too few port connections. Expected 18, found 17.
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(108): [PCDPC] - Port size (9) does not match connection size (1) for port 'address_a'. The port definition is at: gameBoardFSM.v(131).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(108): [PCDPC] - Port size (11) does not match connection size (1) for port 'box_address'. The port definition is at: gameBoardFSM.v(131).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(112): [PCDPC] - Port size (8) does not match connection size (1) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(112): [PCDPC] - Port size (8) does not match connection size (1) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(114): [PCDPC] - Port size (9) does not match connection size (1) for port 'address'. The port definition is at: addressHandling.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/ATP1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(116): [PCDPC] - Port size (11) does not match connection size (10) for port 'pixelX'. The port definition is at: addressHandling.v(57).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/PTP1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(116): [PCDPC] - Port size (11) does not match connection size (9) for port 'pixelY'. The port definition is at: addressHandling.v(57).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/PTP1 File: addressHandling.v
+# unsigned
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:37:41 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:37:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:37:41 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:37:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:37:41 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:37:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:37:46 on Dec 01,2023, Elapsed time: 0:06:02
+# Errors: 0, Warnings: 8
+# vsim -L altera_mf_ver topLevel 
+# Start time: 13:37:46 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# unsigned
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:38:53 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:38:53 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:38:53 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:38:53 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:38:53 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:38:53 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:38:56 on Dec 01,2023, Elapsed time: 0:01:10
+# Errors: 0, Warnings: 5
+# vsim -L altera_mf_ver topLevel 
+# Start time: 13:38:56 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Error: (vish-4014) No objects found matching 'toplevel/GB1/*'.
+# Error in macro ./boardFSM_test.do line 19
+# (vish-4014) No objects found matching 'toplevel/GB1/*'.
+#     while executing
+# "add wave {toplevel/GB1/*}"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:39:41 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:39:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:39:41 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:39:41 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:39:42 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:39:42 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:39:45 on Dec 01,2023, Elapsed time: 0:00:49
+# Errors: 3, Warnings: 5
+# vsim -L altera_mf_ver topLevel 
+# Start time: 13:39:45 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# unsigned
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:42:47 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:42:47 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:42:47 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:42:47 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:42:47 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:42:47 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:42:50 on Dec 01,2023, Elapsed time: 0:03:05
+# Errors: 0, Warnings: 5
+# vsim -L altera_mf_ver topLevel 
+# Start time: 13:42:50 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# unsigned
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:43:51 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:43:51 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:43:51 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:43:51 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:43:51 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:43:51 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:43:54 on Dec 01,2023, Elapsed time: 0:01:04
+# Errors: 0, Warnings: 5
+# vsim -L altera_mf_ver topLevel 
+# Start time: 13:43:54 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# unsigned
+# Break key hit
+# Simulation stop requested.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:46:53 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 13:46:53 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:46:53 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 13:46:53 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:46:53 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 13:46:53 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 13:46:57 on Dec 01,2023, Elapsed time: 0:03:03
+# Errors: 0, Warnings: 5
+# vsim -L altera_mf_ver topLevel 
+# Start time: 13:46:57 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# unsigned
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:25:06 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 17:25:06 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:25:06 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 17:25:06 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:25:06 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 17:25:06 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:25:08 on Dec 01,2023, Elapsed time: 3:38:11
+# Errors: 31, Warnings: 6
+# vsim -L altera_mf_ver topLevel 
+# Start time: 17:25:08 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# unsigned
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:38:32 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 17:38:32 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:38:32 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 17:38:32 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:38:32 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 17:38:32 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:38:33 on Dec 01,2023, Elapsed time: 0:13:25
+# Errors: 0, Warnings: 5
+# vsim -L altera_mf_ver topLevel 
+# Start time: 17:38:34 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Error: (vish-4014) No objects found matching 'topLevel/GB1/D1/*'.
+# Error in macro ./boardFSM_test.do line 20
+# (vish-4014) No objects found matching 'topLevel/GB1/D1/*'.
+#     while executing
+# "add wave {topLevel/GB1/D1/*}"
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:38:52 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 17:38:52 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:38:52 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# 
+# Top level modules:
+# 	addressCounter
+# 	addressToPosition
+# 	positionToAddress
+# 	positionToPixel
+# End time: 17:38:52 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:38:52 on Dec 01,2023
+# vlog -reportprogress 300 BRAM.v 
+# -- Compiling module BRAM
+# 
+# Top level modules:
+# 	BRAM
+# End time: 17:38:52 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:38:53 on Dec 01,2023, Elapsed time: 0:00:19
+# Errors: 3, Warnings: 5
+# vsim -L altera_mf_ver topLevel 
+# Start time: 17:38:53 on Dec 01,2023
+# Loading work.topLevel
+# Loading work.gameBoardFSM
+# Loading work.positionToAddress
+# Loading work.buffer_short
+# Loading work.buffer
+# Loading work.addressCounter
+# Loading work.BRAM
+# Loading altera_mf_ver.altsyncram
+# Loading work.addressToPosition
+# Loading work.positionToPixel
+# Loading work.draw_Back
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# ** Warning: (vsim-3015) gameBoardFSM.v(178): [PCDPC] - Port size (11) does not match connection size (9) for port 'address'. The port definition is at: addressHandling.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/GB1/AC1 File: addressHandling.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_a'. The port definition is at: BRAM.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(113): [PCDPC] - Port size (8) does not match connection size (9) for port 'address_b'. The port definition is at: BRAM.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/B1 File: BRAM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (10) does not match connection size (11) for port 'initial_xPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# ** Warning: (vsim-3015) gameBoardFSM.v(119): [PCDPC] - Port size (9) does not match connection size (11) for port 'initial_yPosition'. The port definition is at: gameBoardFSM.v(463).
+#    Time: 0 ps  Iteration: 0  Instance: /topLevel/D1 File: gameBoardFSM.v
+# unsigned
+do boardFSM_test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:57:58 on Dec 01,2023
+# vlog -reportprogress 300 gameBoardFSM.v 
+# -- Compiling module topLevel
+# -- Compiling module gameBoardFSM
+# -- Compiling module draw_Back
+# -- Compiling module buffer
+# -- Compiling module buffer_short
+# 
+# Top level modules:
+# 	topLevel
+# End time: 17:57:58 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:57:58 on Dec 01,2023
+# vlog -reportprogress 300 addressHandling.v 
+# -- Compiling module addressCounter
+# -- Compiling module addressToPosition
+# -- Compiling module positionToAddress
+# -- Compiling module positionToPixel
+# ** Error: addressHandling.v(64): The generate if condition must be a constant expression.
+# End time: 17:57:58 on Dec 01,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./boardFSM_test.do line 8
+# C:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog addressHandling.v"
