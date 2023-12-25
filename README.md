@@ -1,4 +1,4 @@
-# momentemGO
+# momentumGO
 
 A territorial game for University of Toronto Digital Systems: ECE241 that involves competing against your opponent to capture board spaces in the allotted time limit, utilizing abilities to stun your opponent and gain an upper hand. Created for DE1-SOC FPGA board. 
 
