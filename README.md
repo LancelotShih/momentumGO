@@ -4,8 +4,8 @@ A territorial game for University of Toronto Digital Systems: ECE241 that involv
 
 # Features
 VGA graphics with animation\                                                 
-PS2 Keyboard input\ 
-Interactive abilities between players\ 
+PS2 Keyboard input\
+Interactive abilities between players\
 
 ## Contributing
 
