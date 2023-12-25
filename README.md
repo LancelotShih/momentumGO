@@ -1,6 +1,6 @@
 # momentemGO
 
-A territorial game for University of Toronto ECE241 that involves capturing as many spaces with your color in the allotted time limit, while attempting to sabotage your opponent through stuns to gain the upper hand.
+A territorial game for University of Toronto Digital Systems: ECE241 that involves competing against your opponent to capture board spaces in the allotted time limit, utilizing abilities to stun your opponent and gain an upper hand.
 
 ## Contributing
 
