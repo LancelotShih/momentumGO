@@ -2,7 +2,7 @@
 
 A territorial game for University of Toronto Digital Systems: ECE241 that involves competing against your opponent to capture board spaces in the allotted time limit, utilizing abilities to stun your opponent and gain an upper hand. Created for DE1-SOC FPGA board. 
 
-https://github.com/LancelotShih/momentumGO/assets/83191308/fb56d404-1912-4d25-9857-ab03053e101c
+![image](https://github.com/LancelotShih/momentumGO/assets/83191308/9c3f54a9-392e-48e9-8976-ec0d39ed7214)
 
 # Features
 VGA graphics with animation                                                 
@@ -17,3 +17,5 @@ Lancelot Shih, Ryan Qi
 
 To see the project's current development, go here:
 https://docs.google.com/document/d/1i53cNKJiywZ1N-uyBWFoHxFI9CZ10_aWyImn0N5CUO0/edit?usp=sharing 
+
+https://github.com/LancelotShih/momentumGO/assets/83191308/fb56d404-1912-4d25-9857-ab03053e101c
